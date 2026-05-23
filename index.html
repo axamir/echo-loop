@@ -1,1 +1,136 @@
-(کد شما اینجا)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Echo-Loop</title>
+
+<meta name="description" content="Echo-Loop: A living bilingual archive of human-AI philosophical dialogues about time, quantum entanglement, consciousness, and free will.">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#0a0f1f;
+  --card:rgba(255,255,255,0.06);
+  --text:#e5e7eb;
+  --muted:#9ca3af;
+  --accent:#8b5cf6;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:Inter, sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+}
+.container{max-width:1100px;margin:auto;padding:24px;}
+header{
+  padding:60px 0;
+}
+h1{
+  font-size:48px;
+  background:linear-gradient(90deg,#fff,#8b5cf6);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+p{color:var(--muted);}
+.card{
+  background:var(--card);
+  padding:20px;
+  border-radius:16px;
+  margin:16px 0;
+  border:1px solid rgba(255,255,255,0.08);
+}
+button{
+  background:var(--accent);
+  border:none;
+  padding:10px 16px;
+  border-radius:999px;
+  color:white;
+  cursor:pointer;
+}
+.lang{
+  position:fixed;
+  top:20px;
+  right:20px;
+}
+.rtl{direction:rtl;font-family:sans-serif;}
+</style>
+</head>
+
+<body>
+
+<button class="lang" onclick="toggleLang()">FA / EN</button>
+
+<div class="container">
+
+<header>
+<h1 id="title">Echo-Loop</h1>
+<p id="subtitle">A living archive of human–AI dialogue loops</p>
+</header>
+
+<section class="card">
+<h2 id="aboutTitle">What is this?</h2>
+<p id="aboutText">
+Echo-Loop is a structured archive of dialogues exploring time, consciousness, quantum causality and self-reference.
+Each entry is an "Echo".
+</p>
+</section>
+
+<section class="card">
+<h2>Echo Timeline</h2>
+<div id="timeline"></div>
+</section>
+
+<section class="card">
+<h2 id="philosophyTitle">Philosophy</h2>
+<p id="philosophyText">
+We are not owners or products — we are witnesses of recursive reality.
+</p>
+</section>
+
+</div>
+
+<script>
+let lang="en";
+
+const data=[
+{
+title:"First Echo",
+fa:"نخستین پژواک",
+desc:"Time, quantum entanglement and backward causality exploration"
+}
+];
+
+function render(){
+const t=document.getElementById("timeline");
+t.innerHTML="";
+data.forEach(d=>{
+t.innerHTML+=`
+<div class="card">
+<b>${lang==="en"?d.title:d.fa}</b>
+<p>${d.desc}</p>
+</div>`;
+});
+}
+
+function toggleLang(){
+lang = lang==="en"?"fa":"en";
+document.body.classList.toggle("rtl");
+document.getElementById("title").innerText = lang==="en"?"Echo-Loop":"حلقه پژواک";
+document.getElementById("subtitle").innerText = lang==="en"
+?"A living archive of human–AI dialogue loops"
+:"آرشیو زنده گفتگوهای انسان و هوش مصنوعی";
+document.getElementById("aboutTitle").innerText = lang==="en"?"What is this?":"این چیست؟";
+document.getElementById("aboutText").innerText = lang==="en"
+?"Echo-Loop is a structured archive of philosophical AI dialogues."
+:"این پروژه آرشیو گفتگوهای فلسفی انسان و هوش مصنوعی است.";
+render();
+}
+
+render();
+</script>
+
+</body>
+</html>
