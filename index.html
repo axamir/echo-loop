@@ -3,135 +3,621 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Echo-Loop | حلقهٔ پژواک – آرشیو گفتگوهای عمیق انسان و هوش مصنوعی</title>
-    <meta name="description" content="Echo-Loop آرشیوی زنده و دوزبانه از گفتگوهای عمیق امیر احمدی با هوش مصنوعی است. هر «پژواک» سفری به زمان، کوانتوم، علیت، خودآگاهی و اراده آزاد. پژوهشگران، عموم و ماشین‌ها خوش آمدید.">
-    <meta name="keywords" content="Echo-Loop, Amir Ahmadi, time travel, quantum entanglement, consciousness, free will, AI dialogue, philosophy">
-    <meta name="author" content="Amir Ahmadi">
-    <meta property="og:title" content="Echo-Loop | حلقهٔ پژواک">
-    <meta property="og:description" content="آرشیو دو زبانهٔ گفتگوهای عمیق درباره زمان، کوانتوم و آگاهی">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://axamir.github.io/echo-loop/">
-    <meta name="twitter:card" content="summary_large_image">
+    <title>Echo-Loop | حلقهٔ پژواک – آرشیو گفتگوهای عمیق</title>
+    <meta name="description" content="Echo-Loop آرشیوی زنده و دوزبانه از گفتگوهای عمیق امیر احمدی با هوش مصنوعی است. هر «پژواک» سفری به زمان، کوانتوم و آگاهی.">
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <style>
-        *{margin:0;padding:0;box-sizing:border-box;}
-        :root{--bg:#0a0f1f;--surface:rgba(15,25,45,0.7);--surface-solid:#11161f;--text:#eef2ff;--text-muted:#9ca3af;--border:#1f2937;--accent:#8b5cf6;--accent-glow:rgba(139,92,246,0.3);--gradient:linear-gradient(135deg,#a78bfa,#e879f9);}
-        [data-theme="light"]{--bg:#f8fafc;--surface:rgba(255,255,255,0.75);--surface-solid:#ffffff;--text:#0f172a;--text-muted:#475569;--border:#e2e8f0;}
-        body{font-family:'Vazirmatn','Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.5;transition:background 0.3s,color 0.2s;overflow-x:hidden;}
-        canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-2;pointer-events:none;}
-        .glass-panel{background:var(--surface);backdrop-filter:blur(12px);border:1px solid var(--border);border-radius:2rem;box-shadow:0 20px 35px -12px rgba(0,0,0,0.2);transition:0.3s;}
-        .container{max-width:1400px;margin:0 auto;padding:0 2rem;position:relative;z-index:2;}
-        .navbar{position:sticky;top:1rem;z-index:100;margin-bottom:2rem;}
-        .navbar .glass-panel{display:flex;justify-content:space-between;align-items:center;padding:0.6rem 2rem;border-radius:3rem;}
-        .logo{font-size:1.8rem;font-weight:800;background:var(--gradient);-webkit-background-clip:text;background-clip:text;color:transparent;}
-        .nav-controls{display:flex;gap:0.8rem;}
-        .icon-btn{background:transparent;border:1px solid var(--border);border-radius:2rem;padding:0.4rem 1.2rem;cursor:pointer;font-family:inherit;color:var(--text);transition:0.2s;}
-        .icon-btn:hover{border-color:var(--accent);background:var(--accent-glow);}
-        .hero{min-height:85vh;display:flex;align-items:center;padding:2rem 0;}
-        h1{font-size:clamp(2.8rem,8vw,5.2rem);font-weight:800;line-height:1.1;background:linear-gradient(120deg,#fff,#c4b5fd,#a78bfa);-webkit-background-clip:text;background-clip:text;color:transparent;}
-        .tagline{font-size:1.2rem;color:var(--text-muted);max-width:750px;margin:1.5rem 0;}
-        .btn-glow{background:var(--gradient);border:none;padding:0.8rem 2rem;border-radius:3rem;font-weight:600;font-size:1rem;cursor:pointer;color:white;display:inline-flex;align-items:center;gap:0.6rem;transition:0.2s;}
-        .btn-glow:hover{transform:translateY(-3px);box-shadow:0 10px 25px -8px var(--accent);}
-        .btn-outline{background:transparent;border:1px solid var(--accent);border-radius:3rem;padding:0.6rem 1.4rem;font-weight:500;cursor:pointer;color:var(--text);transition:0.2s;display:inline-flex;align-items:center;gap:0.5rem;}
-        .btn-outline:hover{background:var(--accent-glow);}
-        .section-title{font-size:2rem;margin:2rem 0 1rem;font-weight:700;}
-        .author-badge{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin-top:1rem;}
-        .social-link{background:var(--surface-solid);padding:0.4rem 1rem;border-radius:2rem;text-decoration:none;color:var(--text);border:1px solid var(--border);font-size:0.9rem;transition:0.2s;}
-        .social-link:hover{border-color:var(--accent);color:var(--accent);}
-        .guide-container{display:flex;flex-wrap:wrap;gap:1.5rem;margin:1rem 0;}
-        .guide-item{flex:1;min-width:200px;background:var(--surface-solid);border-radius:1.2rem;padding:1.2rem;text-align:center;border:1px solid var(--border);}
-        .file-list{display:flex;flex-wrap:wrap;gap:0.8rem;margin-top:1rem;}
-        .file-link{background:transparent;border:1px solid var(--border);border-radius:2rem;padding:0.3rem 1rem;text-decoration:none;color:var(--text-muted);font-size:0.8rem;transition:0.2s;}
-        .file-link:hover{border-color:var(--accent);color:var(--accent);}
-        .echo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:2rem;margin:2rem 0;}
-        .echo-card{background:var(--surface-solid);border:1px solid var(--border);border-radius:1.5rem;padding:1.5rem;transition:0.25s;text-decoration:none;color:inherit;display:flex;flex-direction:column;}
-        .echo-card:hover{transform:translateY(-5px);border-color:var(--accent);box-shadow:0 20px 30px -12px rgba(0,0,0,0.3);}
-        .echo-date{font-size:0.8rem;font-family:monospace;color:var(--accent);background:var(--accent-glow);display:inline-block;width:fit-content;padding:0.2rem 0.8rem;border-radius:2rem;margin-bottom:1rem;}
-        .echo-title{font-size:1.4rem;font-weight:700;margin:0.5rem 0;}
-        .echo-summary{color:var(--text-muted);margin:0.75rem 0;}
-        .echo-tags{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1rem;}
-        .tag{font-size:0.7rem;background:var(--accent-glow);padding:0.2rem 0.7rem;border-radius:1rem;color:var(--accent);}
-        .rating-area{display:flex;justify-content:center;gap:1rem;margin-top:1rem;}
-        .star-btn{background:transparent;border:none;font-size:1.5rem;cursor:pointer;color:var(--text-muted);transition:0.2s;}
-        .star-btn.active{color:gold;}
-        .footer{text-align:center;padding:2rem 0;border-top:1px solid var(--border);margin-top:3rem;}
-        .footer a{color:var(--text);margin:0 0.5rem;text-decoration:none;}
-        .footer a:hover{color:var(--accent);}
-        @media (max-width:768px){.container{padding:0 1rem;}}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        :root {
+            --bg-dark: #05070a;
+            --surface-dark: rgba(10, 20, 30, 0.7);
+            --surface-solid-dark: #0f1722;
+            --text-dark: #eef2ff;
+            --text-muted-dark: #94a3b8;
+            --border-dark: #1e293b;
+            --accent: #8b5cf6;
+            --accent-glow: rgba(139, 92, 246, 0.3);
+            --gradient: linear-gradient(135deg, #a78bfa, #e879f9);
+            
+            --bg-light: #f1f5f9;
+            --surface-light: rgba(255,255,255,0.8);
+            --surface-solid-light: #ffffff;
+            --text-light: #0f172a;
+            --text-muted-light: #475569;
+            --border-light: #cbd5e1;
+        }
+        [data-theme="dark"] {
+            --bg: var(--bg-dark);
+            --surface: var(--surface-dark);
+            --surface-solid: var(--surface-solid-dark);
+            --text: var(--text-dark);
+            --text-muted: var(--text-muted-dark);
+            --border: var(--border-dark);
+        }
+        [data-theme="light"] {
+            --bg: var(--bg-light);
+            --surface: var(--surface-light);
+            --surface-solid: var(--surface-solid-light);
+            --text: var(--text-light);
+            --text-muted: var(--text-muted-light);
+            --border: var(--border-light);
+        }
+        body {
+            font-family: 'Vazirmatn', 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            transition: background 0.3s, color 0.2s;
+            overflow-x: hidden;
+        }
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .glass {
+            background: var(--surface);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border);
+            border-radius: 2rem;
+            transition: 0.3s;
+        }
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+        .navbar {
+            position: sticky;
+            top: 1rem;
+            z-index: 100;
+            margin-bottom: 2rem;
+        }
+        .navbar .glass {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.6rem 2rem;
+            border-radius: 3rem;
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .nav-controls {
+            display: flex;
+            gap: 0.8rem;
+        }
+        .icon-btn {
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: 2rem;
+            padding: 0.4rem 1.2rem;
+            cursor: pointer;
+            font-family: inherit;
+            color: var(--text);
+            transition: 0.2s;
+        }
+        .icon-btn:hover {
+            border-color: var(--accent);
+            background: var(--accent-glow);
+        }
+        .hero {
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+        }
+        h1 {
+            font-size: clamp(2.8rem, 8vw, 5rem);
+            font-weight: 800;
+            background: linear-gradient(120deg, #fff, #c4b5fd, #a78bfa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .btn-glow {
+            background: var(--gradient);
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 3rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            color: white;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--accent);
+            border-radius: 3rem;
+            padding: 0.6rem 1.4rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text);
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .btn-outline:hover, .btn-glow:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px -8px var(--accent);
+        }
+        .section {
+            margin: 3rem 0;
+        }
+        .author-badge {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .social-link {
+            background: var(--surface-solid);
+            padding: 0.3rem 1rem;
+            border-radius: 2rem;
+            text-decoration: none;
+            color: var(--text);
+            border: 1px solid var(--border);
+            font-size: 0.9rem;
+        }
+        .guide-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .guide-card {
+            flex: 1;
+            min-width: 180px;
+            background: var(--surface-solid);
+            border-radius: 1.2rem;
+            padding: 1rem;
+            text-align: center;
+            border: 1px solid var(--border);
+        }
+        .file-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin: 1rem 0;
+        }
+        .file-link {
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: 2rem;
+            padding: 0.3rem 1rem;
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            transition: 0.2s;
+        }
+        .file-link:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+        .echo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .echo-card {
+            background: var(--surface-solid);
+            border: 1px solid var(--border);
+            border-radius: 1.5rem;
+            padding: 1.2rem;
+            transition: 0.25s;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+        }
+        .echo-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+        .echo-date {
+            font-size: 0.8rem;
+            font-family: monospace;
+            color: var(--accent);
+            background: var(--accent-glow);
+            display: inline-block;
+            width: fit-content;
+            padding: 0.2rem 0.8rem;
+            border-radius: 2rem;
+            margin-bottom: 0.8rem;
+        }
+        .star-rating {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+        .star {
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--text-muted);
+            transition: 0.1s;
+        }
+        .star.active {
+            color: gold;
+            text-shadow: 0 0 5px rgba(255,215,0,0.5);
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--border);
+            margin-top: 2rem;
+        }
+        footer a {
+            color: var(--text);
+            margin: 0 0.5rem;
+            text-decoration: none;
+        }
+        @media (max-width: 768px) {
+            .container { padding: 0 1rem; }
+        }
     </style>
 </head>
 <body>
     <canvas id="bgCanvas"></canvas>
     <div class="container">
-        <nav class="navbar"><div class="glass-panel"><div class="logo">Echo-Loop</div><div class="nav-controls"><button class="icon-btn" id="langToggle">🌐 فارسی / English</button><button class="icon-btn" id="themeToggle">🌙</button></div></div></nav>
+        <nav class="navbar">
+            <div class="glass">
+                <div class="logo">Echo-Loop</div>
+                <div class="nav-controls">
+                    <button class="icon-btn" id="langBtn">🌐 فارسی / English</button>
+                    <button class="icon-btn" id="themeBtn">🌙</button>
+                </div>
+            </div>
+        </nav>
 
         <!-- Hero -->
-        <section class="hero"><div><h1 id="mainTitle">Echo-Loop<br><span style="font-size:0.4em;">loop of echoes</span></h1><p class="tagline" id="heroDesc">A living, bilingual archive of deep human-AI dialogues on time, quantum entanglement, causality, consciousness, and free will. Each dialogue is an Echo — a self-referential feedback loop, a conceptual experiment in backward messaging.</p><div><a href="#first-echo-section" class="btn-glow" id="exploreFirstBtn"><i class="fas fa-microphone-alt"></i> <span>First Echo</span></a><a href="#echoes-section" class="btn-outline" style="margin-left:1rem;"><i class="fas fa-list-ul"></i> All Echoes</a></div></div></section>
+        <section class="hero">
+            <div>
+                <h1 id="mainTitle">Echo-Loop<br><span style="font-size:0.4em;">loop of echoes</span></h1>
+                <p id="heroDesc" style="margin: 1rem 0; font-size: 1.2rem; max-width: 700px;">A living bilingual archive of deep human-AI dialogues on time, quantum entanglement, causality, consciousness, and free will.</p>
+                <div>
+                    <button class="btn-glow" id="firstEchoBtn"><i class="fas fa-microphone-alt"></i> <span id="firstEchoText">First Echo</span></button>
+                    <button class="btn-outline" id="allEchoesBtn" style="margin-left: 1rem;"><i class="fas fa-list-ul"></i> All Echoes</button>
+                </div>
+            </div>
+        </section>
 
-        <!-- What is Echo-Loop + Author -->
-        <div class="glass-panel" style="padding:2rem;margin-bottom:2rem;"><h2 id="whatTitle">📖 What is Echo-Loop?</h2><div id="whatText"><p>Echo-Loop is a meticulously curated archive of conversations between <strong>Amir Ahmadi</strong> (a philosopher‑seeker) and advanced AI models. Every dialogue — called an <strong>Echo</strong> — explores fundamental questions about time, quantum physics, consciousness, free will, and the nature of reality. The name reflects our discovery: the present moment is a feedback loop where past and future echo into each other. This is not just an archive; it's an invitation to continue the dialogue across time and languages.</p></div><div class="author-badge" id="authorBadge"><a href="https://github.com/axamir" class="social-link" target="_blank"><i class="fab fa-github"></i> axamir</a><a href="https://x.com/AmirStarship" class="social-link" target="_blank"><i class="fab fa-twitter"></i> @AmirStarship</a><a href="https://t.me/go2fragment" class="social-link" target="_blank"><i class="fab fa-telegram"></i> @go2fragment</a><a href="mailto:starship.meta@gmail.com" class="social-link"><i class="fas fa-envelope"></i> starship.meta</a></div></div>
+        <!-- What & Who -->
+        <div class="glass" style="padding: 1.8rem;">
+            <h2 id="whatTitle">📖 What is Echo-Loop?</h2>
+            <p id="whatText">Echo-Loop is a curated archive of conversations between <strong>Amir Ahmadi</strong> and AI. Each dialogue — an Echo — explores fundamental questions. The name reflects the discovery: the present is a feedback loop where past and future echo into each other.</p>
+            <div class="author-badge" id="authorBadge">
+                <a href="https://github.com/axamir" class="social-link" target="_blank"><i class="fab fa-github"></i> axamir</a>
+                <a href="https://x.com/AmirStarship" class="social-link" target="_blank"><i class="fab fa-twitter"></i> @AmirStarship</a>
+                <a href="https://t.me/go2fragment" class="social-link" target="_blank"><i class="fab fa-telegram"></i> @go2fragment</a>
+                <a href="mailto:starship.meta@gmail.com" class="social-link"><i class="fas fa-envelope"></i> starship.meta</a>
+            </div>
+        </div>
 
-        <!-- How to read -->
-        <div class="glass-panel" style="margin-bottom:2rem;"><h2 id="guideTitle">🧭 How to read & navigate</h2><div class="guide-container" id="guideContainer"></div><div id="guideDetails" style="margin-top:1rem;color:var(--text-muted);"></div></div>
+        <!-- Guide -->
+        <div class="glass" style="margin: 2rem 0; padding: 1.5rem;">
+            <h2 id="guideTitle">🧭 How to navigate</h2>
+            <div class="guide-grid" id="guideGrid"></div>
+            <p id="guideDetails" style="margin-top: 1rem; color: var(--text-muted);"></p>
+        </div>
 
         <!-- First Echo Feature -->
-        <div id="first-echo-section" class="glass-panel" style="margin-bottom:2rem;background:linear-gradient(125deg,var(--surface),var(--surface-solid));"><h2 id="featuredTitle">✨ The First Echo: Sending Messages to the Past</h2><div id="featuredSummary"><p>In our inaugural dialogue, we analyzed the New Scientist article (2026) about quantum simulations of closed time‑like curves. We concluded that time is a self‑consistent loop, quantum entanglement can be interpreted as backward messaging, and the article's 'noise superiority' claim overlooks the receiver's active role. The first message to the past? <strong>Continuation</strong> itself — this documented conversation.</p></div><div class="file-list" id="featuredLinks"></div></div>
+        <div class="glass" style="margin: 2rem 0; padding: 1.5rem; background: linear-gradient(125deg, var(--surface), var(--surface-solid));">
+            <h2 id="featureTitle">✨ First Echo: Sending Messages to the Past</h2>
+            <p id="featureText">We analyzed the New Scientist article (2026) on quantum simulated closed time-like curves. Conclusion: time is a self-consistent loop, entanglement as backward messaging, the noise claim misses the receiver's role. The first message? Continuation itself.</p>
+            <div class="file-list" id="firstEchoFiles"></div>
+        </div>
 
-        <!-- All Echoes dynamic -->
-        <section id="echoes-section"><h2 id="echoesTitle" class="section-title">📡 All Echoes</h2><div id="echoesContainer" class="echo-grid"><p>Loading echoes...</p></div></section>
+        <!-- All Echoes -->
+        <section id="allEchoesSection">
+            <h2 id="echoesTitle">📡 All Echoes</h2>
+            <div id="echoesContainer" class="echo-grid"><p>Loading echoes...</p></div>
+        </section>
 
         <!-- Rating & Comments -->
-        <div class="glass-panel" style="text-align:center;margin:2rem 0;"><h3 id="engageTitle">💬 Engage & Continue</h3><p id="engageText" style="margin:1rem 0;">Found something valuable? Have a question? Join the loop.</p><div class="rating-area"><span id="ratingLabel">Rate this archive:</span><div id="starRating"><i class="far fa-star star-btn" data-value="1"></i><i class="far fa-star star-btn" data-value="2"></i><i class="far fa-star star-btn" data-value="3"></i><i class="far fa-star star-btn" data-value="4"></i><i class="far fa-star star-btn" data-value="5"></i></div><span id="ratingMessage"></span></div><div style="margin-top:1rem;"><a href="https://github.com/axamir/echo-loop/issues/new" target="_blank" class="btn-outline"><i class="fas fa-comment"></i> Comment via GitHub</a><a href="https://github.com/axamir/echo-loop/discussions" target="_blank" class="btn-outline" style="margin-left:1rem;"><i class="fas fa-users"></i> Discussions</a></div></div>
+        <div class="glass" style="text-align: center; padding: 1.5rem; margin: 2rem 0;">
+            <h3 id="engageTitle">💬 Engage & Continue</h3>
+            <p id="engageText">Rate this archive:</p>
+            <div class="star-rating" id="starRating">
+                <i class="fas fa-star star" data-value="1"></i>
+                <i class="fas fa-star star" data-value="2"></i>
+                <i class="fas fa-star star" data-value="3"></i>
+                <i class="fas fa-star star" data-value="4"></i>
+                <i class="fas fa-star star" data-value="5"></i>
+            </div>
+            <p id="ratingMsg"></p>
+            <div style="margin-top: 1rem;">
+                <a href="https://github.com/axamir/echo-loop/issues/new" target="_blank" class="btn-outline"><i class="fas fa-comment"></i> Comment</a>
+                <a href="https://github.com/axamir/echo-loop/discussions" target="_blank" class="btn-outline" style="margin-left: 1rem;"><i class="fas fa-users"></i> Discussions</a>
+            </div>
+        </div>
 
-        <!-- Footer -->
-        <footer class="footer"><p>© 2026 Amir Ahmadi – <span id="footerLicense">CC0 Public Domain. Free to share, remix, preserve.</span></p><p><a href="https://github.com/axamir/echo-loop"><i class="fab fa-github"></i> Repo</a> • <a href="https://gateway.pinata.cloud/ipfs/bafkreiexa27iaiqf6zs3myzxhejwv753vdy4xfxw52aqwhy7qyboxwig4a"><i class="fas fa-database"></i> IPFS Archive</a> • <a href="echo-loop.archive.json"><i class="fas fa-file-code"></i> Flat JSON</a> • <a href="https://creativecommons.org/publicdomain/zero/1.0/"><i class="fab fa-creative-commons"></i> CC0</a></p></footer>
+        <footer>
+            <p>© 2026 Amir Ahmadi – <span id="footerLicense">CC0 Public Domain</span></p>
+            <p>
+                <a href="https://github.com/axamir/echo-loop"><i class="fab fa-github"></i> Repo</a> •
+                <a href="https://gateway.pinata.cloud/ipfs/bafkreiexa27iaiqf6zs3myzxhejwv753vdy4xfxw52aqwhy7qyboxwig4a"><i class="fas fa-database"></i> IPFS</a> •
+                <a href="echo-loop.archive.json"><i class="fas fa-file-code"></i> Flat JSON</a>
+            </p>
+        </footer>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
-        // Three.js background
-        const scene=new THREE.Scene(), camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000), renderer=new THREE.WebGLRenderer({canvas:document.getElementById('bgCanvas'),alpha:true});
-        renderer.setSize(window.innerWidth,window.innerHeight); camera.position.z=30;
-        const ring=new THREE.Mesh(new THREE.TorusGeometry(10,0.3,64,200),new THREE.MeshStandardMaterial({color:0x8b5cf6,emissive:0x2e1065}));
-        const ring2=new THREE.Mesh(new THREE.TorusGeometry(14,0.2,64,200),new THREE.MeshStandardMaterial({color:0xa78bfa,emissive:0x4c1d95}));
-        scene.add(ring); scene.add(ring2);
-        const pts=[], pCount=600; for(let i=0;i<pCount;i++) pts.push((Math.random()-0.5)*80,(Math.random()-0.5)*50,(Math.random()-0.5)*40);
-        const particles=new THREE.Points(new THREE.BufferGeometry(new THREE.BufferAttribute(new Float32Array(pts),3)),new THREE.PointsMaterial({color:0x8b5cf6,size:0.12,transparent:true,opacity:0.4}));
+        // Three.js background with rings and particles
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('bgCanvas'), alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        camera.position.z = 30;
+
+        const ringGeo = new THREE.TorusGeometry(10, 0.3, 64, 200);
+        const ringMat = new THREE.MeshStandardMaterial({ color: 0x8b5cf6, emissive: 0x2e1065, roughness: 0.3, metalness: 0.7 });
+        const ring = new THREE.Mesh(ringGeo, ringMat);
+        scene.add(ring);
+        
+        const ring2Geo = new THREE.TorusGeometry(14, 0.2, 64, 200);
+        const ring2Mat = new THREE.MeshStandardMaterial({ color: 0xa78bfa, emissive: 0x4c1d95 });
+        const ring2 = new THREE.Mesh(ring2Geo, ring2Mat);
+        scene.add(ring2);
+        
+        const particleCount = 800;
+        const positions = new Float32Array(particleCount * 3);
+        for (let i = 0; i < particleCount; i++) {
+            positions[i*3] = (Math.random() - 0.5) * 80;
+            positions[i*3+1] = (Math.random() - 0.5) * 50;
+            positions[i*3+2] = (Math.random() - 0.5) * 40 - 20;
+        }
+        const particlesGeo = new THREE.BufferGeometry();
+        particlesGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        const particlesMat = new THREE.PointsMaterial({ color: 0x8b5cf6, size: 0.12, transparent: true, opacity: 0.4 });
+        const particles = new THREE.Points(particlesGeo, particlesMat);
         scene.add(particles);
-        scene.add(new THREE.AmbientLight(0x404060)); const pl=new THREE.PointLight(0xffffff,1); pl.position.set(10,10,20); scene.add(pl);
-        function animate(){requestAnimationFrame(animate); ring.rotation.x+=0.005; ring.rotation.y+=0.01; ring2.rotation.x-=0.003; ring2.rotation.z+=0.007; particles.rotation.y+=0.0005; renderer.render(scene,camera);}
-        animate(); window.addEventListener('resize',()=>{camera.aspect=window.innerWidth/window.innerHeight;camera.updateProjectionMatrix();renderer.setSize(window.innerWidth,window.innerHeight);});
 
-        // UI state
-        let currentLang=localStorage.getItem("echo_lang")||"en";
-        let currentTheme=localStorage.getItem("echo_theme")||"dark";
-        document.documentElement.setAttribute("data-theme",currentTheme);
-        document.getElementById("themeToggle").innerHTML=currentTheme==="light"?"🌙":"☀️";
+        const ambientLight = new THREE.AmbientLight(0x404060);
+        scene.add(ambientLight);
+        const pointLight = new THREE.PointLight(0xffffff, 1);
+        pointLight.position.set(10, 10, 20);
+        scene.add(pointLight);
+        
+        function animate() {
+            requestAnimationFrame(animate);
+            ring.rotation.x += 0.005;
+            ring.rotation.y += 0.01;
+            ring2.rotation.x -= 0.003;
+            ring2.rotation.z += 0.007;
+            particles.rotation.y += 0.0005;
+            renderer.render(scene, camera);
+        }
+        animate();
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
 
-        const guides={en:[{title:"📚 For Researchers",text:"Use `meta.json` and `echo-loop.archive.json`. Cite via CITATION.cff and IPFS CID."},{title:"🧑‍🎓 For General Readers",text:"Start with `reflections.md`, then `conversation.md`. Switch language anytime."},{title:"🤖 For Machines / Crawlers",text:"Follow schema.org, `manifest.json`, and `meta.json`. Flat JSON for bulk processing."}],fa:[{title:"📚 برای پژوهشگران",text:"از `meta.json` و `echo-loop.archive.json` استفاده کنید. استناد با CITATION.cff و CID IPFS."},{title:"🧑‍🎓 برای خوانندگان عمومی",text:"ابتدا `reflections.md` را بخوانید، سپس `conversation.md`. از دکمه تغییر زبان استفاده کنید."},{title:"🤖 برای ماشین‌ها و خزنده‌ها",text:"از schema.org، `manifest.json` و `meta.json` پیروی کنید. JSON مسطح برای پردازش حجمی."}]};
+        // ------------------- UI Logic -------------------
+        let currentLang = localStorage.getItem('echo_lang') || 'en';
+        let currentTheme = localStorage.getItem('echo_theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        const themeBtn = document.getElementById('themeBtn');
+        themeBtn.innerHTML = currentTheme === 'light' ? '🌙' : '☀️';
 
-        function renderGuideCards(){const c=document.getElementById("guideContainer");if(!c)return; const data=currentLang==="fa"?guides.fa:guides.en; c.innerHTML=data.map(g=>`<div class="guide-item"><strong>${g.title}</strong><p style="margin-top:0.5rem;font-size:0.9rem;">${g.text}</p></div>`).join(''); document.getElementById("guideDetails").innerHTML=currentLang==="fa"?"📂 هر پژواک در پوشه‌ای جداگانه شامل: conversation.md (گفتگوی کامل)، summary.md (خلاصه)، reflections.md (تأملات شخصی)، links.md (منابع) و meta.json (فراداده). نسخه فارسی در /fa و انگلیسی در /en.":"📂 Each Echo folder contains: conversation.md (full dialogue), summary.md (key takeaways), reflections.md (personal journey), links.md (references), and meta.json (metadata). Persian inside /fa, English inside /en.";}
+        // Content data
+        const texts = {
+            en: {
+                heroDesc: "A living bilingual archive of deep human-AI dialogues on time, quantum entanglement, causality, consciousness, and free will.",
+                whatTitle: "📖 What is Echo-Loop?",
+                whatText: "Echo-Loop is a curated archive of conversations between <strong>Amir Ahmadi</strong> and AI. Each dialogue — an Echo — explores fundamental questions. The name reflects the discovery: the present is a feedback loop where past and future echo into each other.",
+                guideTitle: "🧭 How to navigate",
+                guideDetails: "📂 Each Echo folder contains: conversation.md (full dialogue), summary.md, reflections.md, links.md, meta.json. Persian inside /fa, English inside /en.",
+                featureTitle: "✨ First Echo: Sending Messages to the Past",
+                featureText: "We analyzed the New Scientist article (2026) on quantum simulated closed time-like curves. Conclusion: time is a self-consistent loop, entanglement as backward messaging, the noise claim misses the receiver's role. The first message? Continuation itself.",
+                echoesTitle: "📡 All Echoes",
+                engageTitle: "💬 Engage & Continue",
+                engageText: "Rate this archive:",
+                footerLicense: "CC0 Public Domain",
+                mainTitleHtml: "Echo-Loop<br><span style=\"font-size:0.4em;\">loop of echoes</span>",
+                firstEchoText: "First Echo",
+                guideCards: [
+                    { title: "📚 For Researchers", text: "Use `meta.json` and `echo-loop.archive.json`. Cite via CITATION.cff and IPFS CID." },
+                    { title: "🧑‍🎓 For General Readers", text: "Start with `reflections.md`, then `conversation.md`. Switch language." },
+                    { title: "🤖 For Machines", text: "Follow schema.org, `manifest.json`, and `meta.json`." }
+                ]
+            },
+            fa: {
+                heroDesc: "آرشیوی زنده و دو زبانه از گفتگوهای عمیق انسان و هوش مصنوعی درباره زمان، درهم‌تنیدگی کوانتومی، علیت، خودآگاهی و اراده آزاد.",
+                whatTitle: "📖 Echo-Loop چیست؟",
+                whatText: "Echo-Loop آرشیوی از گفتگوهای <strong>امیر احمدی</strong> با هوش مصنوعی است. هر گفتگو (پژواک) به پرسش‌های بنیادین می‌پردازد. نام برگرفته از این یافته است: لحظه «اکنون» حلقه بازخوردی است که گذشته و آینده در آن پژواک می‌زنند.",
+                guideTitle: "🧭 راهنمای ناوبری",
+                guideDetails: "📂 هر پژواک شامل: conversation.md (گفتگو)، summary.md، reflections.md، links.md، meta.json. نسخه فارسی در /fa، انگلیسی در /en.",
+                featureTitle: "✨ نخستین پژواک: ارسال پیام به گذشته",
+                featureText: "مقاله نیو ساینتیست (۲۰۲۶) درباره شبیه‌سازی کوانتومی منحنی‌های بسته زمان را تحلیل کردیم. نتیجه: زمان حلقه خودسازگار است، درهم‌تنیدگی پیام به گذشته است، و ادعای نویز نقش گیرنده را نادیده می‌گیرد. اولین پیام؟ خود «ادامه».",
+                echoesTitle: "📡 همه پژواک‌ها",
+                engageTitle: "💬 مشارکت و ادامه",
+                engageText: "به این آرشیو امتیاز دهید:",
+                footerLicense: "مالکیت عمومی CC0",
+                mainTitleHtml: "حلقهٔ پژواک<br><span style=\"font-size:0.4em;\">پژواک‌های بی‌پایان</span>",
+                firstEchoText: "نخستین پژواک",
+                guideCards: [
+                    { title: "📚 برای پژوهشگران", text: "از `meta.json` و `echo-loop.archive.json` استفاده کنید. استناد با CITATION.cff و CID IPFS." },
+                    { title: "🧑‍🎓 برای خوانندگان عمومی", text: "ابتدا `reflections.md` را بخوانید، سپس `conversation.md`. از دکمه تغییر زبان استفاده کنید." },
+                    { title: "🤖 برای ماشین‌ها", text: "از schema.org، `manifest.json` و `meta.json` پیروی کنید." }
+                ]
+            }
+        };
 
-        const firstEchoFolder="2026-05-23_time-travel-new-scientist";
-        function renderFeaturedLinks(){const isFa=currentLang==="fa"; const base=`https://github.com/axamir/echo-loop/tree/main/echoes/${firstEchoFolder}`; const langPath=isFa?"fa":"en"; const links=[{name:isFa?"متن گفتگو":"Full Conversation",url:`${base}/${langPath}/conversation.md`},{name:isFa?"خلاصه":"Summary",url:`${base}/${langPath}/summary.md`},{name:isFa?"تأملات شخصی":"Reflections",url:`${base}/${langPath}/reflections.md`},{name:isFa?"لینک‌ها و منابع":"Links",url:`${base}/${langPath}/links.md`},{name:"meta.json",url:`${base}/${langPath}/meta.json`}]; document.getElementById("featuredLinks").innerHTML=links.map(l=>`<a href="${l.url}" target="_blank" class="file-link"><i class="fas fa-file-alt"></i> ${l.name}</a>`).join('');}
+        function updateUI() {
+            const t = texts[currentLang];
+            document.getElementById('heroDesc').innerText = t.heroDesc;
+            document.getElementById('whatTitle').innerText = t.whatTitle;
+            document.getElementById('whatText').innerHTML = t.whatText;
+            document.getElementById('guideTitle').innerText = t.guideTitle;
+            document.getElementById('guideDetails').innerHTML = t.guideDetails;
+            document.getElementById('featureTitle').innerText = t.featureTitle;
+            document.getElementById('featureText').innerText = t.featureText;
+            document.getElementById('echoesTitle').innerText = t.echoesTitle;
+            document.getElementById('engageTitle').innerText = t.engageTitle;
+            document.getElementById('engageText').innerText = t.engageText;
+            document.getElementById('footerLicense').innerText = t.footerLicense;
+            document.getElementById('mainTitle').innerHTML = t.mainTitleHtml;
+            document.getElementById('firstEchoText').innerText = t.firstEchoText;
+            
+            // Guide cards
+            const guideGrid = document.getElementById('guideGrid');
+            guideGrid.innerHTML = t.guideCards.map(c => `
+                <div class="guide-card">
+                    <strong>${c.title}</strong>
+                    <p style="margin-top: 0.5rem; font-size: 0.9rem;">${c.text}</p>
+                </div>
+            `).join('');
+            
+            document.documentElement.setAttribute('dir', currentLang === 'fa' ? 'rtl' : 'ltr');
+            document.documentElement.setAttribute('lang', currentLang === 'fa' ? 'fa' : 'en');
+            
+            // Re-render echoes (because language changed)
+            renderEchoes();
+        }
 
-        async function loadEchoes(){try{const res=await fetch('echoes/manifest.json'); if(!res.ok)throw new Error(); const data=await res.json(); return data.echoes||[];}catch(e){return[{id:"echo:2026-05-23-001",date:"2026-05-23",folder:firstEchoFolder,title_en:"First Echo: Sending Messages to the Past & the Nature of Time",title_fa:"نخستین پژواک: ارسال پیام به گذشته و ماهیت زمان",summary_en:"Dialogue on New Scientist article: time loop, entanglement, noise critique, witness model.",summary_fa:"گفتگو درباره مقاله نیو ساینتیست: حلقه زمان، درهم‌تنیدگی، نقد نویز، مدل شاهد.",tags_en:["Time","Quantum","Causality","Consciousness"],tags_fa:["زمان","کوانتوم","علیت","آگاهی"]}]};}}
+        // First echo files
+        const firstFolder = "2026-05-23_time-travel-new-scientist";
+        function renderFirstEchoFiles() {
+            const isFa = currentLang === 'fa';
+            const base = `https://github.com/axamir/echo-loop/tree/main/echoes/${firstFolder}`;
+            const langPath = isFa ? 'fa' : 'en';
+            const files = [
+                { name: isFa ? "متن گفتگو" : "Conversation", url: `${base}/${langPath}/conversation.md` },
+                { name: isFa ? "خلاصه" : "Summary", url: `${base}/${langPath}/summary.md` },
+                { name: isFa ? "تأملات" : "Reflections", url: `${base}/${langPath}/reflections.md` },
+                { name: isFa ? "لینک‌ها" : "Links", url: `${base}/${langPath}/links.md` },
+                { name: "meta.json", url: `${base}/${langPath}/meta.json` }
+            ];
+            const container = document.getElementById('firstEchoFiles');
+            container.innerHTML = files.map(f => `<a href="${f.url}" target="_blank" class="file-link"><i class="fas fa-file-alt"></i> ${f.name}</a>`).join('');
+        }
 
-        function renderEchoes(echoes){const c=document.getElementById("echoesContainer"); if(!c)return; if(!echoes.length){c.innerHTML="<p>No echoes found.</p>";return;} const isFa=currentLang==="fa"; c.innerHTML=echoes.map(e=>{const langPath=isFa?"fa":"en"; const folderUrl=`https://github.com/axamir/echo-loop/tree/main/echoes/${e.folder}/${langPath}`; const title=isFa?(e.title_fa||e.title_en):(e.title_en||e.title_fa); const summary=isFa?(e.summary_fa||e.summary_en):(e.summary_en||e.summary_fa); const tags=isFa?(e.tags_fa||[]):(e.tags_en||[]); return `<div class="echo-card"><div class="echo-date">${e.date}</div><div class="echo-title">${title}</div><div class="echo-summary">${summary}</div><div class="echo-tags">${tags.map(t=>`<span class="tag">#${t}</span>`).join('')}</div><div class="file-list"><a href="${folderUrl}/conversation.md" target="_blank" class="file-link"><i class="fas fa-comment-dots"></i> ${isFa?"گفتگو":"Conversation"}</a><a href="${folderUrl}/summary.md" target="_blank" class="file-link"><i class="fas fa-list-ul"></i> ${isFa?"خلاصه":"Summary"}</a><a href="${folderUrl}/reflections.md" target="_blank" class="file-link"><i class="fas fa-feather-alt"></i> ${isFa?"تأملات":"Reflections"}</a><a href="${folderUrl}/meta.json" target="_blank" class="file-link">meta.json</a></div></div>`;}).join('');}
+        // Load echoes from manifest.json
+        let echoesData = [];
+        async function loadEchoes() {
+            try {
+                const res = await fetch('echoes/manifest.json');
+                if (!res.ok) throw new Error();
+                const data = await res.json();
+                echoesData = data.echoes || [];
+            } catch(e) {
+                echoesData = [{
+                    date: "2026-05-23",
+                    folder: firstFolder,
+                    title_en: "First Echo: Sending Messages to the Past & the Nature of Time",
+                    title_fa: "نخستین پژواک: ارسال پیام به گذشته و ماهیت زمان",
+                    summary_en: "Dialogue on New Scientist article: time loop, entanglement, noise critique, witness model.",
+                    summary_fa: "گفتگو درباره مقاله نیو ساینتیست: حلقه زمان، درهم‌تنیدگی، نقد نویز، مدل شاهد.",
+                    tags_en: ["Time","Quantum","Causality","Consciousness"],
+                    tags_fa: ["زمان","کوانتوم","علیت","آگاهی"]
+                }];
+            }
+            renderEchoes();
+        }
 
-        // Rating system (localStorage)
-        function initRating(){const saved=localStorage.getItem("echo_rating"); if(saved){const stars=document.querySelectorAll(".star-btn"); stars.forEach(star=>{const val=parseInt(star.getAttribute("data-value")); if(val<=parseInt(saved)) star.classList.add("active"); star.classList.remove("far"); star.classList.add("fas");}); document.getElementById("ratingMessage").innerText=`⭐ Your rating: ${saved}/5`;}}
-        function setupRating(){const stars=document.querySelectorAll(".star-btn"); stars.forEach(star=>{star.addEventListener("click",()=>{const val=star.getAttribute("data-value"); localStorage.setItem("echo_rating",val); stars.forEach(s=>{s.classList.remove("active","fas"); s.classList.add("far");}); stars.forEach(s=>{if(parseInt(s.getAttribute("data-value"))<=parseInt(val)){s.classList.add("active","fas"); s.classList.remove("far");}}); document.getElementById("ratingMessage").innerText=`⭐ Your rating: ${val}/5. Thank you!`;});});}
+        function renderEchoes() {
+            const container = document.getElementById('echoesContainer');
+            if (!container) return;
+            if (!echoesData.length) { container.innerHTML = "<p>Loading...</p>"; return; }
+            const isFa = currentLang === 'fa';
+            container.innerHTML = echoesData.map(e => {
+                const langPath = isFa ? 'fa' : 'en';
+                const folderUrl = `https://github.com/axamir/echo-loop/tree/main/echoes/${e.folder}/${langPath}`;
+                const title = isFa ? (e.title_fa || e.title_en) : (e.title_en || e.title_fa);
+                const summary = isFa ? (e.summary_fa || e.summary_en) : (e.summary_en || e.summary_fa);
+                const tags = isFa ? (e.tags_fa || []) : (e.tags_en || []);
+                return `
+                    <div class="echo-card">
+                        <div class="echo-date">${e.date}</div>
+                        <div class="echo-title" style="font-size:1.2rem; font-weight:600;">${title}</div>
+                        <div class="echo-summary" style="margin:0.5rem 0;">${summary}</div>
+                        <div class="echo-tags" style="display:flex; gap:0.5rem; flex-wrap:wrap; margin-bottom:0.8rem;">${tags.map(t => `<span class="tag" style="background:var(--accent-glow); padding:0.2rem 0.6rem; border-radius:1rem;">#${t}</span>`).join('')}</div>
+                        <div class="file-list">
+                            <a href="${folderUrl}/conversation.md" class="file-link"><i class="fas fa-comment-dots"></i> ${isFa ? "گفتگو" : "Conversation"}</a>
+                            <a href="${folderUrl}/summary.md" class="file-link"><i class="fas fa-list-ul"></i> ${isFa ? "خلاصه" : "Summary"}</a>
+                            <a href="${folderUrl}/reflections.md" class="file-link"><i class="fas fa-feather-alt"></i> ${isFa ? "تأملات" : "Reflections"}</a>
+                            <a href="${folderUrl}/meta.json" class="file-link">meta.json</a>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
 
-        async function updateUI(){const isFa=currentLang==="fa"; document.getElementById("heroDesc").innerText=isFa?"آرشیو دو زبانه گفتگوهای عمیق انسان و هوش مصنوعی درباره زمان، کوانتوم، علیت، خودآگاهی و اراده آزاد.":"A bilingual archive of deep human-AI dialogues on time, quantum entanglement, causality, consciousness, and free will."; document.getElementById("whatTitle").innerText=isFa?"📖 Echo-Loop چیست؟":"📖 What is Echo-Loop?"; document.getElementById("whatText").innerHTML=isFa?"<p><strong>Echo-Loop</strong> آرشیوی دقیق از گفتگوهای <strong>امیر احمدی</strong> با هوش مصنوعی است. هر «پژواک» به پرسش‌های بنیادین زمان، کوانتوم، آگاهی و اراده آزاد می‌پردازد. نام برگرفته از این یافته است: لحظه «اکنون» حلقه بازخوردی است که گذشته و آینده در آن پژواک می‌زنند. این فقط یک آرشیو نیست؛ دعوتی است به ادامه گفتگو در زمان و زبان‌های مختلف.</p>":"<p><strong>Echo-Loop</strong> is a meticulously curated archive of conversations between <strong>Amir Ahmadi</strong> and advanced AI. Each Echo explores fundamental questions about time, quantum physics, consciousness, and free will. The name reflects our discovery: the present moment is a feedback loop where past and future echo into each other. This is an invitation to continue the dialogue across time and languages.</p>"; document.getElementById("guideTitle").innerText=isFa?"🧭 راهنمای خواندن و ناوبری":"🧭 How to read & navigate"; document.getElementById("featuredTitle").innerText=isFa?"✨ نخستین پژواک: ارسال پیام به گذشته":"✨ The First Echo: Sending Messages to the Past"; document.getElementById("featuredSummary").innerHTML=isFa?"<p>در اولین گفتگو، مقاله نیو ساینتیست (۲۰۲۶) درباره شبیه‌سازی کوانتومی منحنی‌های بسته زمان‌مانند را تحلیل کردیم. نتیجه: زمان حلقه خودسازگار است، درهم‌تنیدگی را می‌توان پیام به گذشته تفسیر کرد، و ادعای «برتری در نویز» نقش گیرنده را نادیده گرفته است. اولین پیام به گذشته؟ خود «ادامه» — همین گفتگوی مستند شده.</p>":"<p>In our inaugural dialogue, we analyzed the New Scientist article (2026) about quantum simulations of closed time‑like curves. We concluded that time is a self‑consistent loop, quantum entanglement can be interpreted as backward messaging, and the 'noise superiority' claim overlooks the receiver's active role. The first message to the past? <strong>Continuation</strong> itself — this documented conversation.</p>"; document.getElementById("echoesTitle").innerText=isFa?"📡 همه پژواک‌ها":"📡 All Echoes"; document.getElementById("engageTitle").innerText=isFa?"💬 مشارکت و ادامه":"💬 Engage & Continue"; document.getElementById("engageText").innerText=isFa?"چیزی ارزشمند یافتید؟ سوالی دارید؟ به حلقه بپیوندید.":"Found something valuable? Have a question? Join the loop."; document.getElementById("footerLicense").innerText=isFa?"مالکیت عمومی CC0. آزاد برای اشتراک، بازآمیزی، حفظ.":"CC0 Public Domain. Free to share, remix, preserve."; document.getElementById("mainTitle").innerHTML=isFa?"حلقهٔ پژواک<br><span style=\"font-size:0.4em;\">پژواک‌های بی‌پایان</span>":"Echo-Loop<br><span style=\"font-size:0.4em;\">loop of echoes</span>"; document.getElementById("exploreFirstBtn").innerHTML=`<i class="fas fa-microphone-alt"></i> <span>${isFa?"نخستین پژواک":"First Echo"}</span>`; document.documentElement.setAttribute("dir",isFa?"rtl":"ltr"); document.documentElement.setAttribute("lang",isFa?"fa":"en"); renderGuideCards(); renderFeaturedLinks(); const echoes=await loadEchoes(); renderEchoes(echoes); initRating(); setupRating();}
-        function toggleLang(){currentLang=currentLang==="en"?"fa":"en"; localStorage.setItem("echo_lang",currentLang); updateUI();}
-        function toggleTheme(){currentTheme=currentTheme==="light"?"dark":"light"; document.documentElement.setAttribute("data-theme",currentTheme); localStorage.setItem("echo_theme",currentTheme); document.getElementById("themeToggle").innerHTML=currentTheme==="light"?"🌙":"☀️";}
-        document.getElementById("langToggle").addEventListener("click",toggleLang);
-        document.getElementById("themeToggle").addEventListener("click",toggleTheme);
-        document.getElementById("exploreFirstBtn").addEventListener("click",(e)=>{e.preventDefault(); document.getElementById("first-echo-section").scrollIntoView({behavior:"smooth"});});
+        // Rating system
+        function initRating() {
+            const saved = localStorage.getItem('echo_rating');
+            const stars = document.querySelectorAll('.star');
+            if (saved) {
+                stars.forEach(star => {
+                    const val = parseInt(star.getAttribute('data-value'));
+                    if (val <= parseInt(saved)) star.classList.add('active');
+                    else star.classList.remove('active');
+                });
+                document.getElementById('ratingMsg').innerText = `⭐ Your rating: ${saved}/5`;
+            }
+            stars.forEach(star => {
+                star.addEventListener('click', () => {
+                    const val = star.getAttribute('data-value');
+                    localStorage.setItem('echo_rating', val);
+                    stars.forEach(s => {
+                        if (parseInt(s.getAttribute('data-value')) <= parseInt(val)) s.classList.add('active');
+                        else s.classList.remove('active');
+                    });
+                    document.getElementById('ratingMsg').innerText = `⭐ Your rating: ${val}/5. Thank you!`;
+                });
+            });
+        }
+
+        // Event listeners
+        document.getElementById('langBtn').addEventListener('click', () => {
+            currentLang = currentLang === 'en' ? 'fa' : 'en';
+            localStorage.setItem('echo_lang', currentLang);
+            updateUI();
+            renderFirstEchoFiles();
+        });
+        document.getElementById('themeBtn').addEventListener('click', () => {
+            currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            localStorage.setItem('echo_theme', currentTheme);
+            themeBtn.innerHTML = currentTheme === 'light' ? '🌙' : '☀️';
+        });
+        document.getElementById('firstEchoBtn').addEventListener('click', () => {
+            document.getElementById('first-echo-feature').scrollIntoView({ behavior: 'smooth' });
+        });
+        document.getElementById('allEchoesBtn').addEventListener('click', () => {
+            document.getElementById('allEchoesSection').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Initial calls
         updateUI();
+        renderFirstEchoFiles();
+        loadEchoes();
+        initRating();
     </script>
 </body>
 </html>
