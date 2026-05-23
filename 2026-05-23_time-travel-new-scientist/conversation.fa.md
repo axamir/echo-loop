@@ -1,3 +1,1 @@
-# conversation (fa)
-
-متن گفتگو به زبان fa
+[متن کامل conversation.fa.md که در بالا آمد را اینجا بچسبانید]

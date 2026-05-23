@@ -1,3 +1,1 @@
-# reflections (fa)
-
-متن گفتگو به زبان fa
+[متن کامل reflections.fa.md را بچسبانید]
