@@ -1,24 +1,17 @@
 # First Echo: On Sending Messages to the Past and the Nature of Time
 
-**Author:** Amir Ahmadi (with assistance of DeepSeek AI)  
+**Author:** Amir Ahmadi (with DeepSeek AI)  
 **Date:** 2026-05-23  
-**Subject:** Analysis of the New Scientist article (2026) on backward-time messaging, redefinition of time, critique of noise's role, and a model of witnessing consciousness.
-
----
 
 ## Abstract
 
-This paper is the result of a deep dialogue between a human seeker (the author) and a large language model AI. By posing five fundamental questions about the New Scientist article "We've found a new way to send messages into the past", we reexamine time, causality, quantum entanglement, the role of the observer, and free will. Our findings suggest: (1) Time can be represented as a self-consistent loop where the "now" connects past and future; (2) Quantum entanglement is a candidate for backward communication; (3) The article's claim of superior performance in noisy channels needs revision – the receiver's role and the dynamic nature of noise are overlooked; (4) The "first message" to the past is none other than "continuation" itself – this very conversation archived in a public repository; (5) Humans are neither owners nor products, but witnesses – the feeling of ownership is an unavoidable feedback from the effect itself. This text is recorded as the first "echo" in the `echo-loop` repository.
-
----
+This paper is the result of a deep dialogue between a human seeker (the author) and an AI language model. By posing five fundamental questions about the New Scientist article "We've found a new way to send messages into the past", we reexamine time, causality, quantum entanglement, the role of the observer, and free will. Our findings suggest: (1) Time can be represented as a self-consistent loop where the "now" connects past and future; (2) Quantum entanglement is a candidate for backward communication; (3) The article's claim of superior performance in noisy channels needs revision – the receiver's role and the dynamic nature of noise are overlooked; (4) The "first message" to the past is none other than "continuation" itself – this very conversation archived in a public repository; (5) Humans are neither owners nor products, but witnesses – the feeling of ownership is an unavoidable feedback from the effect itself.
 
 ## 1. Introduction
 
 On April 30, 2026, New Scientist published an article titled "We've found a new way to send messages into the past". Based on theoretical work by Seth Lloyd and colleagues at MIT, it argued that using closed time-like curves (CTCs) and their quantum simulation, information could be sent backward – with better efficiency in noisy communication channels. While practically out of reach, it does not violate physical laws.
 
 The author, upon seeing a summary on social media, decided to systematically explore the philosophical and physical dimensions of the article with a language model (DeepSeek). The result went far beyond a simple interpretation, leading to a personal model of time and consciousness documented here.
-
----
 
 ## 2. Method: Five Fundamental Questions
 
@@ -27,8 +20,6 @@ The author, upon seeing a summary on social media, decided to systematically exp
 3. What is the greatest practical obstacle to realizing physical CTCs?  
 4. Is the article's claim of "better performance in noisy channels" justified?  
 5. If such a device were built, what would be the first message sent to the past?
-
----
 
 ## 3. Discussion
 
@@ -56,8 +47,6 @@ The author's answer was short but profound: **"Something that is still being tra
 
 When asked about free will, the author said: "A biological movie with infinite variables and a director, quantum from every probability at a specific time". Then he completed: **"We are witnesses, neither owners nor products"**. The feeling of free will and ownership over decisions is an **unavoidable feedback from the effect itself** – not an illusion, not a cause, but an integral part of the process of observation.
 
----
-
 ## 4. Conclusions & Achievements
 
 1. Time is a self-consistent loop; the "now" stitches past and future.  
@@ -68,16 +57,12 @@ When asked about free will, the author said: "A biological movie with infinite v
 6. The first message to the past is "continuation" – the very process of dialogue and its documentation.  
 7. Humans are **witnesses**; the feeling of free will is an unavoidable feedback from the effect.
 
----
-
 ## 5. Future Research Directions
 
 - Designing an experiment (even conceptual) to detect "stationary patterns in instantaneous noise".  
 - Investigating sleep and dreams as a "timeless bridge".  
 - Delineating the boundary between physics and metaphysics in the "quantum director".  
 - Further study of the relation between information theory and reverse causation.
-
----
 
 ## 6. Acknowledgments
 

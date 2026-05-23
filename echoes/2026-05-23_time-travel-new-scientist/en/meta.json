@@ -1,12 +1,14 @@
 {
   "title": "First Echo: Sending messages to the past and the nature of time",
   "date": "2026-05-23",
-  "ai_model": "DeepSeek (via chat)",
-  "tags": ["time", "quantum physics", "time travel", "free will", "consciousness"],
+  "ai_model": "DeepSeek",
+  "tags": ["time", "quantum", "causality", "consciousness", "free will"],
   "status": "complete",
-  "actions_taken": ["repo created", "dialogue documented", "landing page designed"],
-  "related_links": [
-    "https://github.com/axamir/echo-loop",
-    "https://www.newscientist.com/article/..."
-  ]
+  "languages": ["fa", "en"],
+  "authors": ["Amir Ahmadi"],
+  "contact": {
+    "email": "starship.meta@gmail.com",
+    "twitter": "https://x.com/AmirStarship",
+    "telegram": "https://t.me/go2fragment"
+  }
 }

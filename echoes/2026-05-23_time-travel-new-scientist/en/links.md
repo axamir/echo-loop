@@ -8,7 +8,8 @@
 
 ## GitHub repository
 - [echo-loop - Main Repository](https://github.com/axamir/echo-loop)
-- Direct path to First Echo: `https://github.com/axamir/echo-loop/tree/main/echoes/2026-05-23_time-travel-new-scientist`
+- Direct path to First Echo (English): `https://github.com/axamir/echo-loop/tree/main/echoes/2026-05-23_time-travel-new-scientist/en`
+- Direct path to First Echo (Persian): `https://github.com/axamir/echo-loop/tree/main/echoes/2026-05-23_time-travel-new-scientist/fa`
 
 ## Researchers
 - Prof. Seth Lloyd (MIT) – slloyd@mit.edu

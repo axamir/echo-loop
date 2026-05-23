@@ -8,7 +8,8 @@
 
 ## مخزن گیت‌هاب
 - [echo-loop - Main Repository](https://github.com/axamir/echo-loop)
-- مسیر مستقیم به نخستین پژواک: `https://github.com/axamir/echo-loop/tree/main/2026-05-23_time-travel-new-scientist`
+- مسیر مستقیم به نخستین پژواک (فارسی): `https://github.com/axamir/echo-loop/tree/main/echoes/2026-05-23_time-travel-new-scientist/fa`
+- مسیر مستقیم به نخستین پژواک (انگلیسی): `https://github.com/axamir/echo-loop/tree/main/echoes/2026-05-23_time-travel-new-scientist/en`
 
 ## پژوهشگران مرتبط
 - Prof. Seth Lloyd (MIT) – slloyd@mit.edu
