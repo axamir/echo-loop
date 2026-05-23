@@ -3,146 +3,150 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Echo-Loop | Living Archive</title>
+<title>Echo-Loop — Living Archive</title>
 
-<meta name="description" content="Echo-Loop is a living Web3-style archive of human-AI dialogues about time, consciousness, quantum causality and self-reference.">
+<meta name="description" content="Echo-Loop is a living bilingual timeline of human-AI dialogues exploring time, consciousness, causality and free will.">
+<meta name="theme-color" content="#0a0f1f"/>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Vazirmatn:wght@300;400;700&display=swap" rel="stylesheet">
 
 <style>
 :root{
-  --bg:#0b1020;
-  --panel:rgba(255,255,255,0.06);
-  --panel2:rgba(255,255,255,0.09);
+  --bg:#0a0f1f;
+  --panel:rgba(255,255,255,0.05);
   --text:#e5e7eb;
   --muted:#9ca3af;
   --accent:#8b5cf6;
+  --accent2:#22d3ee;
   --border:rgba(255,255,255,0.08);
 }
 
-*{margin:0;padding:0;box-sizing:border-box;}
+[data-theme="light"]{
+  --bg:#f8fafc;
+  --panel:#ffffff;
+  --text:#0f172a;
+  --muted:#475569;
+  --border:#e2e8f0;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
 body{
-  font-family:Inter, sans-serif;
+  font-family:Inter,Vazirmatn,sans-serif;
   background:var(--bg);
   color:var(--text);
   overflow-x:hidden;
 }
 
-/* layout */
+/* Layout */
 .app{
   display:grid;
-  grid-template-columns:280px 1fr;
+  grid-template-columns:260px 1fr;
   min-height:100vh;
 }
 
-/* sidebar */
+/* Sidebar */
 .sidebar{
-  background:rgba(255,255,255,0.03);
   border-right:1px solid var(--border);
   padding:20px;
-  display:flex;
-  flex-direction:column;
-  gap:20px;
+  position:sticky;
+  top:0;
+  height:100vh;
+  backdrop-filter: blur(20px);
 }
 
-.logo{
-  font-size:22px;
+.brand{
   font-weight:800;
-  background:linear-gradient(90deg,#fff,#8b5cf6);
+  font-size:20px;
+  background:linear-gradient(45deg,var(--accent),var(--accent2));
   -webkit-background-clip:text;
   color:transparent;
+  margin-bottom:20px;
 }
 
-.nav-item{
+.nav button{
+  width:100%;
   padding:10px;
+  margin:6px 0;
+  background:transparent;
+  border:1px solid var(--border);
+  color:var(--text);
   border-radius:10px;
   cursor:pointer;
-  color:var(--muted);
-  transition:.2s;
-}
-.nav-item:hover{
-  background:var(--panel);
-  color:white;
+  text-align:left;
 }
 
-/* main */
+.nav button:hover{
+  border-color:var(--accent);
+}
+
+/* Main */
 .main{
   padding:30px;
 }
 
-.header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-
-.toggle{
-  background:var(--panel);
-  border:1px solid var(--border);
-  padding:8px 14px;
-  border-radius:999px;
-  cursor:pointer;
-  color:white;
-}
-
-/* hero */
 .hero{
-  margin-top:30px;
-  padding:30px;
-  background:var(--panel);
+  padding:40px;
   border:1px solid var(--border);
   border-radius:20px;
+  background:linear-gradient(135deg,rgba(139,92,246,0.1),rgba(34,211,238,0.05));
 }
 
-.hero h1{
-  font-size:40px;
-  background:linear-gradient(90deg,#fff,#8b5cf6);
-  -webkit-background-clip:text;
-  color:transparent;
+h1{
+  font-size:42px;
+  font-weight:800;
 }
 
-.hero p{
+.sub{
   color:var(--muted);
   margin-top:10px;
 }
 
-/* timeline */
+/* Timeline */
 .timeline{
   margin-top:30px;
   display:flex;
   flex-direction:column;
-  gap:15px;
+  gap:12px;
 }
 
 .card{
-  background:var(--panel);
-  border:1px solid var(--border);
   padding:18px;
-  border-radius:16px;
-  transition:.2s;
+  border:1px solid var(--border);
+  border-radius:14px;
+  background:var(--panel);
+  cursor:pointer;
+  transition:0.2s;
 }
+
 .card:hover{
-  transform:translateY(-3px);
-  background:var(--panel2);
+  transform:translateY(-2px);
+  border-color:var(--accent);
 }
 
 .tag{
-  display:inline-block;
   font-size:12px;
   color:var(--accent);
-  margin-top:8px;
 }
 
-/* RTL */
-.rtl{
-  direction:rtl;
-  font-family:sans-serif;
+/* topbar */
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:20px;
 }
 
-/* responsive */
+.btn{
+  padding:8px 14px;
+  border-radius:10px;
+  border:1px solid var(--border);
+  background:transparent;
+  cursor:pointer;
+}
+
+/* mobile */
 @media(max-width:900px){
-  .app{grid-template-columns:1fr;}
-  .sidebar{display:none;}
+  .app{grid-template-columns:1fr}
+  .sidebar{display:none}
 }
 </style>
 </head>
@@ -153,96 +157,98 @@ body{
 
 <!-- SIDEBAR -->
 <div class="sidebar">
-<div class="logo">Echo-Loop</div>
+  <div class="brand">Echo-Loop</div>
 
-<div class="nav-item" onclick="setView('timeline')">Timeline</div>
-<div class="nav-item" onclick="setView('about')">About</div>
-<div class="nav-item" onclick="setView('philosophy')">Philosophy</div>
+  <div class="nav">
+    <button onclick="setView('timeline')">🧭 Timeline</button>
+    <button onclick="setView('topics')">🧠 Topics</button>
+    <button onclick="setView('about')">📘 About</button>
+    <button onclick="toggleLang()">🌐 Language</button>
+    <button onclick="toggleTheme()">🌓 Theme</button>
+  </div>
 
-<button class="toggle" onclick="toggleLang()">EN / FA</button>
-<button class="toggle" onclick="toggleTheme()">Theme</button>
+  <p style="margin-top:20px;color:var(--muted);font-size:12px">
+    Living archive of human ↔ AI cognition loops.
+  </p>
 </div>
 
 <!-- MAIN -->
 <div class="main">
 
-<div class="header">
-<h2 id="title">Echo-Loop</h2>
+<div class="topbar">
+  <div id="modeTitle">Timeline</div>
+  <div>
+    <button class="btn" onclick="refresh()">↻ Refresh</button>
+  </div>
 </div>
 
+<!-- HERO -->
 <div class="hero">
-<h1 id="heroTitle">Living Archive of Echoes</h1>
-<p id="heroText">A Web3-style timeline of human-AI recursive dialogues.</p>
+  <h1 id="title">Echo-Loop</h1>
+  <div class="sub" id="subtitle">
+    A living bilingual timeline of human–AI echoes across time, consciousness and causality.
+  </div>
 </div>
 
-<div class="timeline" id="timeline"></div>
+<!-- CONTENT -->
+<div id="content" class="timeline"></div>
 
 </div>
 </div>
 
 <script>
 
-// ===================== DATA LAYER (manifest-driven future) =====================
-const manifest = {
-  echoes:[
-    {
-      date:"2026-05-23",
-      en:{title:"First Echo",desc:"Time, quantum entanglement and causality loop"},
-      fa:{title:"نخستین پژواک",desc:"زمان، درهم‌تنیدگی کوانتومی و علیت"},
-      tags:["time","quantum","loop"]
-    }
-  ]
-};
+let lang = localStorage.getItem("lang") || "en";
+let theme = localStorage.getItem("theme") || "dark";
+document.documentElement.setAttribute("data-theme", theme);
 
-// ===================== STATE =====================
-let lang = "en";
-let theme = "dark";
+const data = [
+  {id:1, title_en:"Time is not linear", title_fa:"زمان خطی نیست", tag:"time", desc_en:"A loop discussion about temporal causality.", desc_fa:"بحثی درباره علیت و زمان غیرخطی"},
+  {id:2, title_en:"Free Will Feedback", title_fa:"بازخورد اراده آزاد", tag:"consciousness", desc_en:"Will emerges as system feedback.", desc_fa:"اراده آزاد به عنوان بازخورد سیستم"},
+  {id:3, title_en:"Quantum Echo Theory", title_fa:"نظریه پژواک کوانتومی", tag:"quantum", desc_en:"Entangled dialogue states across agents.", desc_fa:"درهم‌تنیدگی گفتگو میان ایجنت‌ها"}
+];
 
-// ===================== RENDER =====================
 function render(){
-  const t = document.getElementById("timeline");
-  t.innerHTML = "";
+  const c = document.getElementById("content");
+  c.innerHTML = "";
 
-  manifest.echoes.forEach(e=>{
-    const d = lang==="en"?e.en:e.fa;
+  data.forEach(x=>{
+    const title = lang==="en"?x.title_en:x.title_fa;
+    const desc = lang==="en"?x.desc_en:x.desc_fa;
 
-    t.innerHTML += `
+    c.innerHTML += `
       <div class="card">
-        <div style="color:#8b5cf6;font-size:12px">${e.date}</div>
-        <div style="font-size:18px;font-weight:600">${d.title}</div>
-        <div style="color:#9ca3af;margin-top:6px">${d.desc}</div>
-        <div class="tag">${e.tags.join(" · ")}</div>
+        <div class="tag">${x.tag}</div>
+        <h3>${title}</h3>
+        <p style="color:var(--muted);margin-top:6px">${desc}</p>
       </div>
     `;
   });
 }
 
-// ===================== LANGUAGE =====================
 function toggleLang(){
   lang = lang==="en"?"fa":"en";
-  document.body.classList.toggle("rtl");
-  document.getElementById("heroTitle").innerText =
-    lang==="en"?"Living Archive of Echoes":"آرشیو زنده پژواک‌ها";
-  document.getElementById("heroText").innerText =
-    lang==="en"
-    ?"A Web3-style timeline of human-AI recursive dialogues."
-    :"تایم‌لاین زنده گفتگوهای بازگشتی انسان و هوش مصنوعی";
+  localStorage.setItem("lang",lang);
+  document.body.dir = lang==="fa"?"rtl":"ltr";
   render();
 }
 
-// ===================== THEME =====================
 function toggleTheme(){
   theme = theme==="dark"?"light":"dark";
-  document.documentElement.style.filter =
-    theme==="dark"?"none":"invert(1)";
+  localStorage.setItem("theme",theme);
+  document.documentElement.setAttribute("data-theme",theme);
 }
-
-// ===================== INIT =====================
-render();
 
 function setView(v){
-  alert("View: "+v+" (expandable system placeholder)");
+  document.getElementById("modeTitle").innerText = v;
 }
+
+function refresh(){
+  render();
+}
+
+document.body.dir = lang==="fa"?"rtl":"ltr";
+render();
 
 </script>
 
