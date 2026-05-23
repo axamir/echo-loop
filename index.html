@@ -1,199 +1,250 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Echo-Loop | Bilingual Archive of Deep Dialogues</title>
-    <meta name="description" content="Echo-Loop is a living, bilingual archive of deep human-AI dialogues exploring time, quantum entanglement, causality, consciousness, and free will. Each echo is a self-referential loop — a conceptual experiment in backward messaging.">
-    <meta name="keywords" content="Echo-Loop, time travel, quantum entanglement, consciousness, free will, dialogue, AI, philosophy, physics">
-    <meta name="author" content="Amir Ahmadi">
-    <meta property="og:title" content="Echo-Loop | Bilingual Archive">
-    <meta property="og:description" content="Exploring the nature of time, quantum entanglement, and consciousness through human-AI dialogues.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://axamir.github.io/echo-loop/">
-    <meta name="twitter:card" content="summary_large_image">
-    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <style>
-        *{margin:0;padding:0;box-sizing:border-box;}
-        :root{--bg:#0a0f1f;--surface:#11161f;--text:#eef2ff;--text-muted:#9ca3af;--border:#1f2937;--accent:#8b5cf6;--accent-glow:rgba(139,92,246,0.2);}
-        [data-theme="light"]{--bg:#f8fafc;--surface:#ffffff;--text:#0f172a;--text-muted:#475569;--border:#e2e8f0;}
-        body{font-family:'Vazirmatn','Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.5;transition:background 0.2s,color 0.2s;}
-        .container{max-width:1280px;margin:0 auto;padding:0 1.5rem;}
-        .navbar{position:sticky;top:0;background:var(--surface);border-bottom:1px solid var(--border);backdrop-filter:blur(8px);padding:0.8rem 0;z-index:100;}
-        .navbar .container{display:flex;justify-content:space-between;align-items:center;}
-        .logo{font-size:1.6rem;font-weight:800;background:linear-gradient(135deg,#a78bfa,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;}
-        .nav-controls{display:flex;gap:0.8rem;}
-        .icon-btn{background:transparent;border:1px solid var(--border);border-radius:2rem;padding:0.4rem 1rem;cursor:pointer;color:inherit;font-family:inherit;transition:0.2s;}
-        .icon-btn:hover{border-color:var(--accent);background:var(--accent-glow);}
-        .hero{min-height:70vh;display:flex;align-items:center;}
-        h1{font-size:clamp(2.5rem,6vw,4.5rem);font-weight:800;background:linear-gradient(120deg,#fff,#c4b5fd);-webkit-background-clip:text;background-clip:text;color:transparent;}
-        .glass-panel{background:var(--surface);border:1px solid var(--border);border-radius:1.5rem;padding:1.8rem;margin:1.5rem 0;box-shadow:0 8px 20px rgba(0,0,0,0.1);}
-        .btn{background:var(--accent);border:none;padding:0.6rem 1.2rem;border-radius:2rem;color:white;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;transition:0.2s;}
-        .btn:hover{transform:translateY(-2px);box-shadow:0 5px 12px var(--accent-glow);}
-        .echo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.5rem;margin:2rem 0;}
-        .echo-card{background:var(--surface);border:1px solid var(--border);border-radius:1rem;padding:1.2rem;transition:0.2s;text-decoration:none;color:inherit;display:block;}
-        .echo-card:hover{transform:translateY(-3px);border-color:var(--accent);}
-        .footer{text-align:center;padding:2rem 0;border-top:1px solid var(--border);margin-top:2rem;color:var(--text-muted);}
-        .footer a{color:var(--text);margin:0 0.5rem;text-decoration:none;}
-        .footer a:hover{color:var(--accent);}
-        .flex-cards{display:flex;flex-wrap:wrap;gap:1.5rem;margin-top:1rem;justify-content:center;}
-        .guide-card{flex:1;min-width:180px;background:var(--surface);border:1px solid var(--border);border-radius:1rem;padding:1rem;text-align:center;}
-        @media (max-width:768px){.container{padding:0 1rem;}}
-        canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;pointer-events:none;}
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Echo-Loop | Living Archive</title>
+
+<meta name="description" content="Echo-Loop is a living Web3-style archive of human-AI dialogues about time, consciousness, quantum causality and self-reference.">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#0b1020;
+  --panel:rgba(255,255,255,0.06);
+  --panel2:rgba(255,255,255,0.09);
+  --text:#e5e7eb;
+  --muted:#9ca3af;
+  --accent:#8b5cf6;
+  --border:rgba(255,255,255,0.08);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:Inter, sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+}
+
+/* layout */
+.app{
+  display:grid;
+  grid-template-columns:280px 1fr;
+  min-height:100vh;
+}
+
+/* sidebar */
+.sidebar{
+  background:rgba(255,255,255,0.03);
+  border-right:1px solid var(--border);
+  padding:20px;
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+
+.logo{
+  font-size:22px;
+  font-weight:800;
+  background:linear-gradient(90deg,#fff,#8b5cf6);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.nav-item{
+  padding:10px;
+  border-radius:10px;
+  cursor:pointer;
+  color:var(--muted);
+  transition:.2s;
+}
+.nav-item:hover{
+  background:var(--panel);
+  color:white;
+}
+
+/* main */
+.main{
+  padding:30px;
+}
+
+.header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.toggle{
+  background:var(--panel);
+  border:1px solid var(--border);
+  padding:8px 14px;
+  border-radius:999px;
+  cursor:pointer;
+  color:white;
+}
+
+/* hero */
+.hero{
+  margin-top:30px;
+  padding:30px;
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:20px;
+}
+
+.hero h1{
+  font-size:40px;
+  background:linear-gradient(90deg,#fff,#8b5cf6);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.hero p{
+  color:var(--muted);
+  margin-top:10px;
+}
+
+/* timeline */
+.timeline{
+  margin-top:30px;
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+}
+
+.card{
+  background:var(--panel);
+  border:1px solid var(--border);
+  padding:18px;
+  border-radius:16px;
+  transition:.2s;
+}
+.card:hover{
+  transform:translateY(-3px);
+  background:var(--panel2);
+}
+
+.tag{
+  display:inline-block;
+  font-size:12px;
+  color:var(--accent);
+  margin-top:8px;
+}
+
+/* RTL */
+.rtl{
+  direction:rtl;
+  font-family:sans-serif;
+}
+
+/* responsive */
+@media(max-width:900px){
+  .app{grid-template-columns:1fr;}
+  .sidebar{display:none;}
+}
+</style>
 </head>
+
 <body>
-    <canvas id="bgCanvas"></canvas>
-    <nav class="navbar"><div class="container"><div class="logo">Echo-Loop</div><div class="nav-controls"><button class="icon-btn" id="langToggle">🌐 فارسی / English</button><button class="icon-btn" id="themeToggle">🌙</button></div></div></nav>
-    <div class="container">
-        <section class="hero"><div><h1 id="mainTitle">Echo-Loop<br><span style="font-size:0.4em;">loop of echoes</span></h1><p id="heroDesc" style="margin:1rem 0;font-size:1.2rem;">A bilingual archive of deep human-AI dialogues on time, quantum entanglement, causality, consciousness & free will.</p><a href="#echoes-section" class="btn" id="exploreBtn"><i class="fas fa-microphone-alt"></i> <span>First Echo</span></a></div></section>
 
-        <div class="glass-panel"><h2 id="whatTitle">What is this landing page?</h2><div id="whatText"><p>This page is the gateway to the Echo-Loop archive. It lists all dialogues (Echoes) and provides links to full conversations, summaries, reflections, and metadata in Persian and English. For researchers: machine-readable metadata is in each echo's <code>meta.json</code> and the flat archive <code>echo-loop.archive.json</code>. For long-term preservation, the entire archive is also on IPFS (see footer).</p></div></div>
+<div class="app">
 
-        <div class="glass-panel"><h2 id="guideTitle">Quick Guide</h2><div class="flex-cards" id="guideCards"></div></div>
+<!-- SIDEBAR -->
+<div class="sidebar">
+<div class="logo">Echo-Loop</div>
 
-        <div class="glass-panel"><h2 id="philosophyTitle">Philosophy</h2><div id="philosophyText"><p>Each Echo is a self-referential feedback loop — a conceptual experiment in backward messaging. We concluded: <strong>“We are not owners or products, but witnesses”</strong> and the feeling of free will is an unavoidable feedback from the effect itself.</p></div></div>
+<div class="nav-item" onclick="setView('timeline')">Timeline</div>
+<div class="nav-item" onclick="setView('about')">About</div>
+<div class="nav-item" onclick="setView('philosophy')">Philosophy</div>
 
-        <section id="echoes-section"><h2 id="echoesTitle">Echoes</h2><div id="echoesContainer" class="echo-grid"><p>Loading echoes...</p></div></section>
+<button class="toggle" onclick="toggleLang()">EN / FA</button>
+<button class="toggle" onclick="toggleTheme()">Theme</button>
+</div>
 
-        <div class="glass-panel" style="text-align:center;"><h3 id="ctaTitle">Continue ...</h3><p id="ctaText">This loop closes with every reader. Continue the dialogue.</p><a href="https://github.com/axamir/echo-loop/discussions" class="btn" target="_blank"><i class="fas fa-comments"></i> Participate</a></div>
-    </div>
-    <footer class="footer"><p>© 2026 Amir Ahmadi. <span id="footerText">Documenting conscious reflections.</span> | License: CC0 Public Domain</p><p><a href="mailto:starship.meta@gmail.com"><i class="fas fa-envelope"></i> Email</a> • <a href="https://x.com/AmirStarship"><i class="fab fa-twitter"></i> X</a> • <a href="https://t.me/go2fragment"><i class="fab fa-telegram"></i> Telegram</a> • <a href="https://github.com/axamir/echo-loop"><i class="fab fa-github"></i> GitHub</a> • <a href="https://gateway.pinata.cloud/ipfs/bafkreiexa27iaiqf6zs3myzxhejwv753vdy4xfxw52aqwhy7qyboxwig4a"><i class="fas fa-database"></i> IPFS Archive</a> • <a href="echo-loop.archive.json"><i class="fas fa-file-code"></i> JSON (flat)</a></p></footer>
+<!-- MAIN -->
+<div class="main">
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script>
-        // Three.js background
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('bgCanvas'), alpha: true });
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        camera.position.z = 30;
-        const ringGeo = new THREE.TorusGeometry(10, 0.3, 64, 200);
-        const ringMat = new THREE.MeshStandardMaterial({ color: 0x8b5cf6, emissive: 0x2e1065, roughness: 0.3, metalness: 0.7 });
-        const ring = new THREE.Mesh(ringGeo, ringMat);
-        scene.add(ring);
-        const ring2Geo = new THREE.TorusGeometry(14, 0.2, 64, 200);
-        const ring2Mat = new THREE.MeshStandardMaterial({ color: 0xa78bfa, emissive: 0x4c1d95 });
-        const ring2 = new THREE.Mesh(ring2Geo, ring2Mat);
-        scene.add(ring2);
-        const ambientLight = new THREE.AmbientLight(0x404060);
-        scene.add(ambientLight);
-        const pointLight = new THREE.PointLight(0xffffff, 1);
-        pointLight.position.set(10, 10, 20);
-        scene.add(pointLight);
-        function animate() { requestAnimationFrame(animate); ring.rotation.x += 0.005; ring.rotation.y += 0.01; ring2.rotation.x -= 0.003; ring2.rotation.z += 0.007; renderer.render(scene, camera); }
-        animate();
-        window.addEventListener('resize', () => { camera.aspect = window.innerWidth / window.innerHeight; camera.updateProjectionMatrix(); renderer.setSize(window.innerWidth, window.innerHeight); });
+<div class="header">
+<h2 id="title">Echo-Loop</h2>
+</div>
 
-        // UI state
-        let currentLang = localStorage.getItem("echo_lang") || "en";
-        let currentTheme = localStorage.getItem("echo_theme") || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-        document.documentElement.setAttribute("data-theme", currentTheme);
-        document.getElementById("themeToggle").innerHTML = currentTheme === "light" ? "🌙" : "☀️";
+<div class="hero">
+<h1 id="heroTitle">Living Archive of Echoes</h1>
+<p id="heroText">A Web3-style timeline of human-AI recursive dialogues.</p>
+</div>
 
-        const guideData = {
-            en: [
-                { icon: "fa-book", title: "📚 Researcher", text: "Use <code>meta.json</code> and <code>echo-loop.archive.json</code>. Cite via <code>CITATION.cff</code> and IPFS CID." },
-                { icon: "fa-eye", title: "🧑‍🎓 General reader", text: "Start with <code>reflections.md</code>, then <code>conversation.md</code>. Use language toggle." },
-                { icon: "fa-robot", title: "🤖 Machine / crawler", text: "Follow schema.org, <code>manifest.json</code>, and <code>meta.json</code>." }
-            ],
-            fa: [
-                { icon: "fa-book", title: "📚 پژوهشگر", text: "از <code>meta.json</code> و <code>echo-loop.archive.json</code> استفاده کنید. استناد با <code>CITATION.cff</code> و CID IPFS." },
-                { icon: "fa-eye", title: "🧑‍🎓 خواننده عمومی", text: "ابتدا <code>reflections.md</code> را بخوانید، سپس <code>conversation.md</code>. از دکمه تغییر زبان استفاده کنید." },
-                { icon: "fa-robot", title: "🤖 ماشین/خزنده", text: "از schema.org، <code>manifest.json</code> و <code>meta.json</code> پیروی کنید." }
-            ]
-        };
+<div class="timeline" id="timeline"></div>
 
-        function renderGuideCards() {
-            const container = document.getElementById("guideCards");
-            if (!container) return;
-            const data = currentLang === "fa" ? guideData.fa : guideData.en;
-            container.innerHTML = data.map(card => `
-                <div class="guide-card">
-                    <i class="fas ${card.icon}" style="font-size:1.8rem;color:var(--accent);margin-bottom:0.5rem;display:block;"></i>
-                    <strong>${card.title}</strong>
-                    <p style="margin-top:0.5rem;font-size:0.9rem;">${card.text}</p>
-                </div>
-            `).join('');
-        }
+</div>
+</div>
 
-        async function loadEchoes() {
-            try {
-                const res = await fetch('echoes/manifest.json');
-                if (!res.ok) throw new Error(`HTTP ${res.status}`);
-                const data = await res.json();
-                return data.echoes || [];
-            } catch (err) {
-                console.error("Failed to load manifest.json", err);
-                document.getElementById("echoesContainer").innerHTML = `<p style="color:red;">⚠️ Could not load echoes. Please check the repository structure.</p>`;
-                return [];
-            }
-        }
+<script>
 
-        function renderEchoes(echoes) {
-            const container = document.getElementById("echoesContainer");
-            if (!container) return;
-            if (!echoes.length) { container.innerHTML = "<p>No echoes found.</p>"; return; }
-            const isFa = currentLang === "fa";
-            container.innerHTML = echoes.map(echo => {
-                const langPath = isFa ? "fa" : "en";
-                const href = `https://github.com/axamir/echo-loop/tree/main/echoes/${echo.folder}/${langPath}`;
-                const title = isFa ? (echo.title_fa || echo.title_en) : (echo.title_en || echo.title_fa);
-                const summary = isFa ? (echo.summary_fa || echo.summary_en) : (echo.summary_en || echo.summary_fa);
-                const tags = isFa ? (echo.tags_fa || []) : (echo.tags_en || []);
-                return `<a href="${href}" target="_blank" class="echo-card">
-                    <div style="font-size:0.8rem;color:var(--accent);">${echo.date}</div>
-                    <div style="font-size:1.2rem;font-weight:600;margin:0.5rem 0;">${title}</div>
-                    <div style="color:var(--text-muted);margin:0.5rem 0;">${summary}</div>
-                    <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">${tags.map(t => `<span style="background:var(--accent-glow);padding:0.2rem 0.6rem;border-radius:1rem;">#${t}</span>`).join('')}</div>
-                </a>`;
-            }).join('');
-        }
+// ===================== DATA LAYER (manifest-driven future) =====================
+const manifest = {
+  echoes:[
+    {
+      date:"2026-05-23",
+      en:{title:"First Echo",desc:"Time, quantum entanglement and causality loop"},
+      fa:{title:"نخستین پژواک",desc:"زمان، درهم‌تنیدگی کوانتومی و علیت"},
+      tags:["time","quantum","loop"]
+    }
+  ]
+};
 
-        function updateUI(echoes=[]) {
-            const isFa = currentLang === "fa";
-            document.getElementById("heroDesc").innerText = isFa ? "آرشیو دو زبانه گفتگوهای انسان و هوش مصنوعی درباره زمان، کوانتوم، علیت، خودآگاهی و اراده آزاد." : "A bilingual archive of deep human-AI dialogues on time, quantum entanglement, causality, consciousness & free will.";
-            document.getElementById("whatTitle").innerText = isFa ? "این صفحه چیست؟" : "What is this landing page?";
-            document.getElementById("whatText").innerHTML = isFa ? "<p>این صفحه دروازه آرشیو Echo-Loop است. همه پژواک‌ها را فهرست می‌کند و لینک به متن کامل، خلاصه، تأملات و فراداده به دو زبان فارسی و انگلیسی ارائه می‌دهد. برای پژوهشگران: فراداده ماشین‌خوان در <code>meta.json</code> و آرشیو مسطح <code>echo-loop.archive.json</code> موجود است. برای ماندگاری بلندمدت، کل آرشیو روی IPFS نیز هست (پانویس).</p>" : "<p>This page is the gateway to the Echo-Loop archive. It lists all dialogues (Echoes) and provides links to full conversations, summaries, reflections, and metadata in Persian and English. For researchers: machine-readable metadata is in each echo's <code>meta.json</code> and the flat archive <code>echo-loop.archive.json</code>. For long-term preservation, the entire archive is also on IPFS (footer).</p>";
-            document.getElementById("guideTitle").innerText = isFa ? "راهنمای سریع" : "Quick Guide";
-            document.getElementById("philosophyTitle").innerText = isFa ? "فلسفه" : "Philosophy";
-            document.getElementById("philosophyText").innerHTML = isFa ? "<p>هر پژواک یک حلقه بازخورد خودارجاع است — آزمایشی مفهومی در پیام‌رسانی به گذشته. نتیجه گرفتیم: <strong>«ما نه مالکیم، نه محصول؛ بلکه شاهد هستیم»</strong> و احساس اراده آزاد فیدبک اجتناب‌ناپذیر خود اثر است.</p>" : "<p>Each Echo is a self-referential feedback loop — a conceptual experiment in backward messaging. We concluded: <strong>“We are not owners or products, but witnesses”</strong> and the feeling of free will is an unavoidable feedback from the effect itself.</p>";
-            document.getElementById("echoesTitle").innerText = isFa ? "پژواک‌ها" : "Echoes";
-            document.getElementById("ctaTitle").innerText = isFa ? "ادامه ..." : "Continue ...";
-            document.getElementById("ctaText").innerText = isFa ? "این حلقه با هر خواننده بسته می‌شود. گفتگو را ادامه دهید." : "This loop closes with every reader. Continue the dialogue.";
-            document.getElementById("footerText").innerText = isFa ? "مستندسازی بازتاب‌های آگاهانه." : "Documenting conscious reflections.";
-            document.getElementById("mainTitle").innerHTML = isFa ? "حلقهٔ پژواک<br><span style=\"font-size:0.4em;\">پژواک‌های بی‌پایان</span>" : "Echo-Loop<br><span style=\"font-size:0.4em;\">loop of echoes</span>";
-            document.getElementById("exploreBtn").innerHTML = `<i class="fas fa-microphone-alt"></i> <span>${isFa ? "نخستین پژواک" : "First Echo"}</span>`;
-            document.documentElement.setAttribute("dir", isFa ? "rtl" : "ltr");
-            document.documentElement.setAttribute("lang", isFa ? "fa" : "en");
-            renderGuideCards();
-            if (echoes.length) renderEchoes(echoes);
-        }
+// ===================== STATE =====================
+let lang = "en";
+let theme = "dark";
 
-        async function init() {
-            const echoes = await loadEchoes();
-            window.echoesData = echoes;
-            updateUI(echoes);
-        }
+// ===================== RENDER =====================
+function render(){
+  const t = document.getElementById("timeline");
+  t.innerHTML = "";
 
-        function toggleLang() {
-            currentLang = currentLang === "en" ? "fa" : "en";
-            localStorage.setItem("echo_lang", currentLang);
-            updateUI(window.echoesData || []);
-        }
-        function toggleTheme() {
-            currentTheme = currentTheme === "light" ? "dark" : "light";
-            document.documentElement.setAttribute("data-theme", currentTheme);
-            localStorage.setItem("echo_theme", currentTheme);
-            document.getElementById("themeToggle").innerHTML = currentTheme === "light" ? "🌙" : "☀️";
-        }
+  manifest.echoes.forEach(e=>{
+    const d = lang==="en"?e.en:e.fa;
 
-        document.getElementById("langToggle").addEventListener("click", toggleLang);
-        document.getElementById("themeToggle").addEventListener("click", toggleTheme);
-        document.getElementById("exploreBtn").addEventListener("click", (e) => { e.preventDefault(); document.getElementById("echoes-section").scrollIntoView({ behavior: "smooth" }); });
-        init();
-    </script>
+    t.innerHTML += `
+      <div class="card">
+        <div style="color:#8b5cf6;font-size:12px">${e.date}</div>
+        <div style="font-size:18px;font-weight:600">${d.title}</div>
+        <div style="color:#9ca3af;margin-top:6px">${d.desc}</div>
+        <div class="tag">${e.tags.join(" · ")}</div>
+      </div>
+    `;
+  });
+}
+
+// ===================== LANGUAGE =====================
+function toggleLang(){
+  lang = lang==="en"?"fa":"en";
+  document.body.classList.toggle("rtl");
+  document.getElementById("heroTitle").innerText =
+    lang==="en"?"Living Archive of Echoes":"آرشیو زنده پژواک‌ها";
+  document.getElementById("heroText").innerText =
+    lang==="en"
+    ?"A Web3-style timeline of human-AI recursive dialogues."
+    :"تایم‌لاین زنده گفتگوهای بازگشتی انسان و هوش مصنوعی";
+  render();
+}
+
+// ===================== THEME =====================
+function toggleTheme(){
+  theme = theme==="dark"?"light":"dark";
+  document.documentElement.style.filter =
+    theme==="dark"?"none":"invert(1)";
+}
+
+// ===================== INIT =====================
+render();
+
+function setView(v){
+  alert("View: "+v+" (expandable system placeholder)");
+}
+
+</script>
+
 </body>
 </html>
