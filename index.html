@@ -1,1 +1,104 @@
-[محتوای کامل HTML که در پاسخ قبلی ارائه شد را اینجا کپی کنید]
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Echo-Loop | حلقهٔ پژواک – آرشیو گفتگوهای عمیق</title>
+    <meta name="description" content="Echo-Loop آرشیوی زنده و دوزبانه از گفتگوهای عمیق امیر احمدی با هوش مصنوعی است. هر «پژواک» سفری به زمان، کوانتوم، علیت و آگاهی.">
+    <meta name="keywords" content="Echo-Loop, Amir Ahmadi, time, quantum, consciousness, AI dialogue, philosophy">
+    <meta name="author" content="Amir Ahmadi">
+    <meta property="og:title" content="Echo-Loop | حلقهٔ پژواک">
+    <meta property="og:description" content="آرشیو دو زبانهٔ گفتگوهای عمیق درباره زمان، کوانتوم و آگاهی">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://axamir.github.io/echo-loop/">
+    <meta name="twitter:card" content="summary_large_image">
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;}
+        :root{--bg:#0a0f1f;--surface:#11161f;--text:#eef2ff;--text-muted:#9ca3af;--border:#1f2937;--accent:#8b5cf6;}
+        [data-theme="light"]{--bg:#f8fafc;--surface:#ffffff;--text:#0f172a;--text-muted:#475569;--border:#e2e8f0;}
+        body{font-family:'Vazirmatn','Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.5;transition:0.2s;}
+        .container{max-width:1280px;margin:0 auto;padding:0 1.5rem;}
+        .glass-panel{background:var(--surface);backdrop-filter:blur(12px);border:1px solid var(--border);border-radius:1.5rem;padding:1.5rem;margin:1rem 0;}
+        .navbar{position:sticky;top:0;background:var(--surface);border-bottom:1px solid var(--border);padding:0.8rem 0;}
+        .navbar .container{display:flex;justify-content:space-between;align-items:center;}
+        .logo{font-size:1.6rem;font-weight:800;background:linear-gradient(135deg,#a78bfa,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;}
+        .nav-controls{display:flex;gap:0.8rem;}
+        .icon-btn{background:transparent;border:1px solid var(--border);border-radius:2rem;padding:0.4rem 1rem;cursor:pointer;color:inherit;}
+        .hero{min-height:70vh;display:flex;align-items:center;}
+        h1{font-size:clamp(2.5rem,6vw,4.5rem);font-weight:800;background:linear-gradient(120deg,#fff,#c4b5fd);-webkit-background-clip:text;background-clip:text;color:transparent;}
+        .btn-glow{background:linear-gradient(90deg,#8b5cf6,#d946ef);border:none;padding:0.7rem 1.5rem;border-radius:2rem;color:white;font-weight:600;display:inline-flex;align-items:center;gap:0.5rem;text-decoration:none;}
+        .echo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.5rem;margin:2rem 0;}
+        .echo-card{background:var(--surface);border:1px solid var(--border);border-radius:1rem;padding:1.2rem;transition:0.2s;text-decoration:none;color:inherit;display:block;}
+        .echo-card:hover{transform:translateY(-3px);border-color:var(--accent);}
+        .footer{text-align:center;padding:1.5rem;border-top:1px solid var(--border);margin-top:2rem;}
+        .footer a{color:var(--text);margin:0 0.5rem;}
+        @media (max-width:768px){.container{padding:0 1rem;}}
+        canvas{position:fixed;top:0;left:0;z-index:-1;opacity:0.3;pointer-events:none;}
+    </style>
+</head>
+<body>
+    <canvas id="bgCanvas"></canvas>
+    <div class="container">
+        <nav class="navbar"><div class="container"><div class="logo">Echo-Loop</div><div class="nav-controls"><button class="icon-btn" id="langToggle">🌐 فارسی / English</button><button class="icon-btn" id="themeToggle">🌙</button></div></div></nav>
+        <section class="hero"><div><h1 id="mainTitle">Echo-Loop<br><span style="font-size:0.4em;">loop of echoes</span></h1><p id="heroDesc" style="margin:1rem 0;">آرشیو دو زبانه گفتگوهای عمیق انسان و هوش مصنوعی</p><a href="#echoes-section" class="btn-glow" id="exploreBtn">نخستین پژواک</a></div></section>
+        <div class="glass-panel"><h2 id="whatTitle">Echo-Loop چیست؟</h2><p id="whatText">این صفحه، دروازه آرشیو گفتگوهای عمیق من با هوش مصنوعی است. هر گفتگو «پژواک» نام دارد.</p></div>
+        <div class="glass-panel"><h2 id="guideTitle">راهنما</h2><div id="guideText"><p>پژوهشگران: از meta.json استفاده کنید. عموم: ابتدا reflections.md را بخوانید.</p></div></div>
+        <div class="glass-panel"><h2 id="philosophyTitle">فلسفه</h2><p id="philosophyText">«ما نه مالکیم، نه محصول؛ شاهد هستیم.»</p></div>
+        <section id="echoes-section"><h2 id="echoesTitle">پژواک‌ها</h2><div id="echoesContainer"><p>در حال بارگذاری...</p></div></section>
+        <div class="glass-panel" style="text-align:center;"><h3 id="ctaTitle">ادامه...</h3><a href="https://github.com/axamir/echo-loop/discussions" class="btn-glow" target="_blank">مشارکت</a></div>
+        <footer class="footer"><p>© 2026 Amir Ahmadi – <span id="footerLicense">CC0</span></p><p><a href="mailto:starship.meta@gmail.com">Email</a> • <a href="https://x.com/AmirStarship">X</a> • <a href="https://t.me/go2fragment">Telegram</a> • <a href="https://github.com/axamir/echo-loop">GitHub</a></p></footer>
+    </div>
+    <script>
+        // Simple bilingual + dark mode + manifest loader
+        let lang = localStorage.getItem("echo_lang") || "fa";
+        let theme = localStorage.getItem("echo_theme") || "dark";
+        document.documentElement.setAttribute("data-theme", theme);
+        function updateUI() {
+            const isFa = lang === "fa";
+            document.getElementById("heroDesc").innerText = isFa ? "آرشیو دو زبانه گفتگوهای عمیق انسان و هوش مصنوعی درباره زمان، کوانتوم، علیت، خودآگاهی و اراده آزاد." : "Bilingual archive of deep human-AI dialogues on time, quantum, causality, consciousness, free will.";
+            document.getElementById("whatTitle").innerText = isFa ? "Echo-Loop چیست؟" : "What is Echo-Loop?";
+            document.getElementById("whatText").innerHTML = isFa ? "این صفحه دروازه آرشیو Echo-Loop است. هر «پژواک» شامل گفتگو، خلاصه، تأملات و فراداده است. برای پژوهشگران: meta.json و آرشیو IPFS. برای عموم: با تأملات شروع کنید." : "This page is the gateway to the Echo-Loop archive. Each Echo contains conversation, summary, reflections, metadata. Researchers: use meta.json and IPFS archive. General: start with reflections.";
+            document.getElementById("guideTitle").innerText = isFa ? "راهنما" : "Guide";
+            document.getElementById("guideText").innerHTML = isFa ? "<strong>پژوهشگر:</strong> meta.json و echo-loop.archive.json<br><strong>عموم:</strong> reflections.md سپس conversation.md<br><strong>ماشین:</strong> schema.org، manifest.json" : "<strong>Researcher:</strong> meta.json and echo-loop.archive.json<br><strong>General:</strong> reflections.md then conversation.md<br><strong>Machine:</strong> schema.org, manifest.json";
+            document.getElementById("philosophyTitle").innerText = isFa ? "فلسفه" : "Philosophy";
+            document.getElementById("philosophyText").innerHTML = isFa ? "«ما نه مالکیم، نه محصول؛ بلکه شاهد هستیم. احساس اراده آزاد، فیدبک اجتناب‌ناپذیر خود اثر است.»" : "“We are not owners or products, but witnesses. The feeling of free will is an unavoidable feedback from the effect.”";
+            document.getElementById("echoesTitle").innerText = isFa ? "پژواک‌ها" : "Echoes";
+            document.getElementById("ctaTitle").innerText = isFa ? "ادامه ..." : "Continue ...";
+            document.getElementById("footerLicense").innerText = isFa ? "مالکیت عمومی CC0" : "CC0 Public Domain";
+            document.getElementById("mainTitle").innerHTML = isFa ? "حلقهٔ پژواک" : "Echo-Loop";
+            document.getElementById("exploreBtn").innerText = isFa ? "نخستین پژواک" : "First Echo";
+            document.documentElement.setAttribute("dir", isFa ? "rtl" : "ltr");
+            document.documentElement.setAttribute("lang", isFa ? "fa" : "en");
+        }
+        function toggleLang() { lang = lang === "fa" ? "en" : "fa"; localStorage.setItem("echo_lang", lang); updateUI(); loadAndRenderEchoes(); }
+        function toggleTheme() { theme = theme === "dark" ? "light" : "dark"; document.documentElement.setAttribute("data-theme", theme); localStorage.setItem("echo_theme", theme); document.getElementById("themeToggle").innerHTML = theme === "light" ? "🌙" : "☀️"; }
+        async function loadAndRenderEchoes() {
+            try {
+                const res = await fetch('echoes/manifest.json');
+                const data = await res.json();
+                const echoes = data.echoes || [];
+                const isFa = lang === "fa";
+                const container = document.getElementById("echoesContainer");
+                if(container) {
+                    container.innerHTML = echoes.map(e => `
+                        <a href="https://github.com/axamir/echo-loop/tree/main/echoes/${e.folder}/${isFa ? 'fa' : 'en'}" target="_blank" class="echo-card">
+                            <div style="color:var(--accent);">${e.date}</div>
+                            <div style="font-weight:600;">${isFa ? e.title_fa : e.title_en}</div>
+                            <div style="color:var(--text-muted);">${isFa ? e.summary_fa : e.summary_en}</div>
+                            <div style="display:flex;gap:0.5rem;margin-top:0.5rem;">${(isFa ? e.tags_fa : e.tags_en).map(t => `<span>#${t}</span>`).join('')}</div>
+                        </a>
+                    `).join('');
+                }
+            } catch(e) { console.warn("manifest not loaded"); }
+        }
+        document.getElementById("langToggle").addEventListener("click", toggleLang);
+        document.getElementById("themeToggle").addEventListener("click", toggleTheme);
+        document.getElementById("exploreBtn").addEventListener("click", (e) => { e.preventDefault(); document.getElementById("echoes-section").scrollIntoView({ behavior: "smooth" }); });
+        updateUI();
+        loadAndRenderEchoes();
+    </script>
+</body>
+</html>
