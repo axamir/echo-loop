@@ -5,7 +5,7 @@ A deep dialogue archive between Amir Ahmadi and AI about time, quantum physics, 
 
 ## How to read without GitHub?
 - The main content is in `echo-loop.archive.json` – a plain text file (JSON format). Any computer from the last 50 years can read it.
-- IPFS link: (add your CID from ipfs_cids.json)
+- IPFS link: https://gateway.pinata.cloud/ipfs/bafkreiexa27iaiqf6zs3myzxhejwv753vdy4xfxw52aqwhy7qyboxwig4a from ipfs_cids.json)
 - Timestamp proof: `echo-loop.archive.json.ots` – verify with OpenTimestamps.
 
 ## How to preserve?

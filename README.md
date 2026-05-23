@@ -73,3 +73,7 @@ alias echopush='cd ~/Desktop/echo-loop && git add . && git commit -m "Auto updat
 (To be chosen – currently all rights reserved or CC BY-NC-SA 4.0)
 
 The loop closes with every reader. Continue.
+
+## 🌐 Permanent IPFS Archive
+The entire archive is also available on IPFS (via Pinata) at:
+[`bafkreiexa27iaiqf6zs3myzxhejwv753vdy4xfxw52aqwhy7qyboxwig4a`](https://gateway.pinata.cloud/ipfs/bafkreiexa27iaiqf6zs3myzxhejwv753vdy4xfxw52aqwhy7qyboxwig4a)
