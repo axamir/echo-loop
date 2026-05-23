@@ -3,145 +3,121 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Echo-Loop // Conscious Interface</title>
+<title>Echo-Loop | Living Archive</title>
+
+<meta name="description" content="Echo-Loop is a living bilingual archive of human-AI dialogues exploring time, consciousness, causality and self-reference." />
+<meta name="author" content="Amir Ahmadi" />
+<meta name="theme-color" content="#0a0f1f" />
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
 
 <style>
 :root{
-  --bg:#050713;
-  --fg:#e8ecff;
-  --muted:#9aa3c7;
+  --bg:#070a12;
+  --card:rgba(255,255,255,0.06);
+  --text:#e7ecff;
+  --muted:#aab3d6;
   --accent:#8b5cf6;
   --line:rgba(255,255,255,0.08);
 }
 
 [data-theme="light"]{
   --bg:#f7f8fc;
-  --fg:#0b1020;
-  --muted:#4a5568;
+  --card:rgba(0,0,0,0.04);
+  --text:#0b1020;
+  --muted:#445;
   --line:rgba(0,0,0,0.1);
 }
 
 *{margin:0;padding:0;box-sizing:border-box}
-
 body{
   font-family:Inter,Vazirmatn,sans-serif;
   background:var(--bg);
-  color:var(--fg);
+  color:var(--text);
   overflow-x:hidden;
 }
 
-/* ===== CANVAS (Living Field) ===== */
-canvas{
-  position:fixed;
-  inset:0;
+/* Canvas */
+#bg{
+  position:fixed;inset:0;
   z-index:-1;
 }
 
-/* ===== LAYOUT ===== */
-.container{
-  max-width:1100px;
-  margin:auto;
-  padding:28px;
-}
+/* Layout */
+.container{max-width:1200px;margin:auto;padding:24px}
 
 nav{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:18px 0;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:16px 0;
 }
 
 .logo{
   font-weight:800;
   letter-spacing:1px;
-  background:linear-gradient(90deg,#8b5cf6,#22d3ee);
+  background:linear-gradient(90deg,#8b5cf6,#ec4899);
   -webkit-background-clip:text;
   color:transparent;
 }
 
 .btn{
+  background:var(--card);
   border:1px solid var(--line);
-  background:transparent;
-  color:var(--fg);
-  padding:8px 14px;
+  color:var(--text);
+  padding:10px 14px;
   border-radius:999px;
   cursor:pointer;
+  transition:.2s;
 }
+.btn:hover{transform:translateY(-2px);border-color:var(--accent)}
 
-/* ===== HERO ===== */
 .hero{
-  padding:80px 0 40px;
+  padding:80px 0;
 }
 
 h1{
-  font-size:clamp(44px,6vw,86px);
-  line-height:1.05;
+  font-size:clamp(40px,6vw,80px);
+  line-height:1.1;
 }
 
-.sub{
+.subtitle{
   margin-top:16px;
   color:var(--muted);
   max-width:700px;
 }
 
-/* ===== NODE SYSTEM (Echo Cards) ===== */
+/* grid */
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:14px;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:16px;
   margin-top:40px;
 }
 
-.node{
+.card{
+  background:var(--card);
   border:1px solid var(--line);
-  background:rgba(255,255,255,0.03);
-  padding:16px;
-  border-radius:16px;
-  transition:.2s;
-  position:relative;
-  overflow:hidden;
+  padding:18px;
+  border-radius:18px;
+  transition:.25s;
 }
-
-.node:hover{
-  transform:translateY(-4px);
+.card:hover{
+  transform:translateY(-6px);
   border-color:var(--accent);
 }
 
-/* glowing pulse = "alive system" */
-.node::after{
-  content:"";
-  position:absolute;
-  inset:-50%;
-  background:radial-gradient(circle,rgba(139,92,246,0.12),transparent 60%);
-  opacity:0;
-  transition:.3s;
+.tag{
+  display:inline-block;
+  margin-top:10px;
+  font-size:12px;
+  opacity:.7;
 }
 
-.node:hover::after{
-  opacity:1;
-}
-
-/* ===== SIGNAL BAR ===== */
-.signal{
-  height:2px;
-  background:linear-gradient(90deg,transparent,var(--accent),transparent);
-  margin:24px 0;
-  animation:flow 2.5s infinite linear;
-}
-
-@keyframes flow{
-  from{transform:translateX(-40%)}
-  to{transform:translateX(40%)}
-}
-
-/* ===== FOOTER ===== */
+/* footer */
 footer{
   margin-top:80px;
-  border-top:1px solid var(--line);
   padding:30px 0;
+  border-top:1px solid var(--line);
   color:var(--muted);
   text-align:center;
 }
@@ -150,7 +126,7 @@ footer{
 
 <body>
 
-<canvas id="field"></canvas>
+<canvas id="bg"></canvas>
 
 <div class="container">
 
@@ -163,144 +139,131 @@ footer{
 </nav>
 
 <section class="hero">
-  <h1 id="title">Conscious Interface</h1>
-  <p class="sub" id="sub">
-    A perception layer between human intent, machine memory, and future agents.
+  <h1 id="title">Echo-Loop</h1>
+  <p class="subtitle" id="subtitle">
+    A living bilingual archive of dialogues between human and machine exploring time, memory and self-reference.
   </p>
 </section>
 
-<div class="signal"></div>
+<section>
+  <div class="grid" id="guide"></div>
+</section>
 
 <section>
-  <div class="grid" id="nodes"></div>
+  <h2 id="echoTitle">Echoes</h2>
+  <div class="grid" id="echoes"></div>
 </section>
 
 <footer>
-  Echo-Loop // CC0 // Living System Layer
+  <div>© 2026 Amir Ahmadi — CC0</div>
+  <div style="margin-top:10px">
+    GitHub • IPFS • Archive
+  </div>
 </footer>
 
 </div>
 
 <script>
+// ===== STATE =====
+let lang = localStorage.getItem("lang") || "en";
+let theme = localStorage.getItem("theme") || "dark";
 
-/* =========================
-   STATE ENGINE (mini core)
-========================= */
-const STATE = {
-  lang: localStorage.getItem("lang") || "en",
-  theme: localStorage.getItem("theme") || "dark",
-  bus: {}
-};
-
-/* ===== EVENT BUS (future agents) ===== */
-function emit(event,data){
-  STATE.bus[event] = data;
-}
-
-/* ===== THEME ===== */
-document.documentElement.setAttribute("data-theme",STATE.theme);
-
+// ===== THEME =====
+document.documentElement.setAttribute("data-theme", theme);
 function toggleTheme(){
-  STATE.theme = STATE.theme==="dark"?"light":"dark";
-  document.documentElement.setAttribute("data-theme",STATE.theme);
-  localStorage.setItem("theme",STATE.theme);
+  theme = theme === "dark" ? "light" : "dark";
+  document.documentElement.setAttribute("data-theme", theme);
+  localStorage.setItem("theme", theme);
 }
 
-/* ===== LANGUAGE ===== */
+// ===== LANGUAGE =====
 function toggleLang(){
-  STATE.lang = STATE.lang==="en"?"fa":"en";
-  localStorage.setItem("lang",STATE.lang);
+  lang = lang === "en" ? "fa" : "en";
+  localStorage.setItem("lang", lang);
   render();
 }
 
-/* ===== NODE DATA (manifest-ready structure) ===== */
-const nodes = [
+// ===== CONTENT =====
+const guide = {
+  en:[
+    ["Research Layer","Uses manifest.json + IPFS archive"],
+    ["Human Layer","Read reflections & dialogues"],
+    ["Machine Layer","Structured schema + metadata"]
+  ],
+  fa:[
+    ["لایه پژوهش","استفاده از manifest و IPFS"],
+    ["لایه انسان","خواندن گفتگوها و تأملات"],
+    ["لایه ماشین","داده ساخت‌یافته و متادیتا"]
+  ]
+};
+
+const echoes = [
   {
-    en:"Echo Archive",
-    fa:"آرشیو پژواک",
-    d:"All dialogues stored in manifest.json"
-  },
-  {
-    en:"Memory Layer",
-    fa:"لایه حافظه",
-    d:"Future-ready for agent persistence"
-  },
-  {
-    en:"Signal Layer",
-    fa:"لایه سیگنال",
-    d:"Event-driven communication bus"
-  },
-  {
-    en:"IPFS Bridge",
-    fa:"پل IPFS",
-    d:"Decentralized archive endpoint"
+    title:"First Echo",
+    fa:"نخستین پژواک",
+    desc:"Time, entanglement, causality loop",
+    tag:"time"
   }
 ];
 
-/* ===== RENDER SYSTEM ===== */
+// ===== RENDER =====
 function render(){
-
   document.getElementById("title").innerText =
-    STATE.lang==="en" ? "Conscious Interface" : "رابط آگاهی";
+    lang==="en" ? "Echo-Loop" : "حلقه پژواک";
 
-  document.getElementById("sub").innerText =
-    STATE.lang==="en"
-    ? "A perception layer between human, machine, and future agents."
-    : "لایه ادراک بین انسان، ماشین و عامل‌های آینده.";
+  document.getElementById("subtitle").innerText =
+    lang==="en"
+    ? "A living archive of human-AI consciousness dialogues."
+    : "آرشیو زنده گفتگوهای آگاهی انسان و ماشین.";
 
-  const root = document.getElementById("nodes");
-  root.innerHTML="";
+  document.getElementById("echoTitle").innerText =
+    lang==="en" ? "Echoes" : "پژواک‌ها";
 
-  nodes.forEach(n=>{
-    root.innerHTML += `
-      <div class="node">
-        <b>${STATE.lang==="en"?n.en:n.fa}</b>
-        <div style="color:var(--muted);margin-top:8px;font-size:13px">
-          ${n.d}
-        </div>
+  // guide
+  const g = document.getElementById("guide");
+  g.innerHTML = "";
+  guide[lang].forEach(i=>{
+    g.innerHTML += `
+      <div class="card">
+        <b>${i[0]}</b>
+        <div class="tag">${i[1]}</div>
+      </div>
+    `;
+  });
+
+  // echoes
+  const e = document.getElementById("echoes");
+  e.innerHTML = "";
+  echoes.forEach(x=>{
+    e.innerHTML += `
+      <div class="card">
+        <b>${lang==="en"?x.title:x.fa}</b>
+        <div class="tag">${x.desc}</div>
       </div>
     `;
   });
 }
-
 render();
 
-/* ===== FIELD ANIMATION (living system metaphor) ===== */
-const c=document.getElementById("field");
+// ===== THREE.JS LIGHT LOOP =====
+const c=document.getElementById("bg");
 const ctx=c.getContext("2d");
-
-function resize(){
-  c.width=innerWidth;
-  c.height=innerHeight;
-}
-resize();
-window.addEventListener("resize",resize);
+c.width=innerWidth;c.height=innerHeight;
 
 let t=0;
-function loop(){
+function animate(){
   ctx.clearRect(0,0,c.width,c.height);
-
-  for(let i=0;i<12;i++){
-    let x=c.width/2;
-    let y=c.height/2;
-
+  for(let i=0;i<8;i++){
+    let r=100+i*40;
     ctx.beginPath();
-    ctx.arc(
-      x + Math.sin(t+i)*60,
-      y + Math.cos(t+i)*60,
-      80+i*18,
-      0,Math.PI*2
-    );
-
-    ctx.strokeStyle="rgba(139,92,246,0.12)";
+    ctx.arc(c.width/2,c.height/2,r+Math.sin(t+i)*20,0,Math.PI*2);
+    ctx.strokeStyle="rgba(139,92,246,0.15)";
     ctx.stroke();
   }
-
   t+=0.01;
-  requestAnimationFrame(loop);
+  requestAnimationFrame(animate);
 }
-loop();
-
+animate();
 </script>
 
 </body>
