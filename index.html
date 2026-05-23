@@ -3,123 +3,134 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Echo-Loop | Living Archive</title>
-
-<meta name="description" content="Echo-Loop is a living bilingual archive of human-AI dialogues exploring time, consciousness, causality and self-reference." />
-<meta name="author" content="Amir Ahmadi" />
-<meta name="theme-color" content="#0a0f1f" />
+<title>Echo-Loop | Living Cognitive System</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
 
 <style>
 :root{
-  --bg:#070a12;
-  --card:rgba(255,255,255,0.06);
-  --text:#e7ecff;
-  --muted:#aab3d6;
+  --bg:#05060c;
+  --panel:rgba(255,255,255,.05);
+  --text:#e5e7eb;
+  --muted:#94a3b8;
   --accent:#8b5cf6;
-  --line:rgba(255,255,255,0.08);
-}
-
-[data-theme="light"]{
-  --bg:#f7f8fc;
-  --card:rgba(0,0,0,0.04);
-  --text:#0b1020;
-  --muted:#445;
-  --line:rgba(0,0,0,0.1);
+  --life:#22c55e;
+  --death:#ef4444;
+  --line:rgba(255,255,255,.08);
 }
 
 *{margin:0;padding:0;box-sizing:border-box}
+
 body{
   font-family:Inter,Vazirmatn,sans-serif;
   background:var(--bg);
   color:var(--text);
-  overflow-x:hidden;
+  overflow:hidden;
 }
 
-/* Canvas */
-#bg{
-  position:fixed;inset:0;
+/* ===== BACKGROUND (BREATHING FIELD) ===== */
+canvas{
+  position:fixed;
+  inset:0;
   z-index:-1;
 }
 
-/* Layout */
-.container{max-width:1200px;margin:auto;padding:24px}
-
-nav{
-  display:flex;justify-content:space-between;align-items:center;
-  padding:16px 0;
+/* ===== LIVING LAYER ===== */
+.ui{
+  display:grid;
+  grid-template-columns:300px 1fr;
+  height:100vh;
 }
 
-.logo{
-  font-weight:800;
-  letter-spacing:1px;
-  background:linear-gradient(90deg,#8b5cf6,#ec4899);
+/* SIDEBAR (ORGANISM MEMORY) */
+.sidebar{
+  border-right:1px solid var(--line);
+  padding:16px;
+  backdrop-filter:blur(20px);
+}
+
+.echoItem{
+  padding:10px;
+  margin-bottom:10px;
+  border:1px solid var(--line);
+  border-radius:12px;
+  cursor:pointer;
+  transition:.2s;
+  background:var(--panel);
+  position:relative;
+}
+
+.echoItem::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  bottom:0;
+  width:4px;
+  background:var(--life);
+  opacity:.4;
+}
+
+.echoItem:hover{
+  transform:translateX(5px);
+}
+
+/* MAIN ORGANISM FIELD */
+.main{
+  position:relative;
+  overflow:hidden;
+}
+
+.header{
+  padding:20px;
+}
+
+.title{
+  font-size:2rem;
+  font-weight:900;
+  background:linear-gradient(90deg,var(--accent),var(--life));
   -webkit-background-clip:text;
   color:transparent;
 }
 
-.btn{
-  background:var(--card);
-  border:1px solid var(--line);
-  color:var(--text);
-  padding:10px 14px;
-  border-radius:999px;
+/* LIVING GRAPH FIELD */
+.field{
+  position:relative;
+  height:100%;
+}
+
+.node{
+  position:absolute;
+  width:14px;
+  height:14px;
+  border-radius:50%;
+  background:var(--life);
+  box-shadow:0 0 20px var(--life);
   cursor:pointer;
-  transition:.2s;
-}
-.btn:hover{transform:translateY(-2px);border-color:var(--accent)}
-
-.hero{
-  padding:80px 0;
+  animation:pulse 3s infinite ease-in-out;
 }
 
-h1{
-  font-size:clamp(40px,6vw,80px);
-  line-height:1.1;
+@keyframes pulse{
+  0%{transform:scale(1);opacity:.8}
+  50%{transform:scale(1.4);opacity:1}
+  100%{transform:scale(1);opacity:.8}
 }
 
-.subtitle{
-  margin-top:16px;
-  color:var(--muted);
-  max-width:700px;
+.link{
+  position:absolute;
+  height:1px;
+  background:rgba(34,197,94,.25);
+  transform-origin:left center;
 }
 
-/* grid */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:16px;
-  margin-top:40px;
-}
-
-.card{
-  background:var(--card);
-  border:1px solid var(--line);
-  padding:18px;
-  border-radius:18px;
-  transition:.25s;
-}
-.card:hover{
-  transform:translateY(-6px);
-  border-color:var(--accent);
-}
-
-.tag{
-  display:inline-block;
-  margin-top:10px;
-  font-size:12px;
-  opacity:.7;
-}
-
-/* footer */
-footer{
-  margin-top:80px;
-  padding:30px 0;
-  border-top:1px solid var(--line);
-  color:var(--muted);
-  text-align:center;
+/* LIFE STATE INDICATORS */
+.lifebar{
+  height:4px;
+  background:var(--life);
+  margin-top:6px;
+  border-radius:10px;
+  opacity:.6;
 }
 </style>
 </head>
@@ -128,142 +139,188 @@ footer{
 
 <canvas id="bg"></canvas>
 
-<div class="container">
+<div class="ui">
 
-<nav>
-  <div class="logo">ECHO-LOOP</div>
-  <div>
-    <button class="btn" onclick="toggleLang()">🌐</button>
-    <button class="btn" onclick="toggleTheme()">🌓</button>
+  <!-- MEMORY ORGANISM -->
+  <div class="sidebar">
+    <h3>Living Echo Organism</h3>
+    <div id="list"></div>
   </div>
-</nav>
 
-<section class="hero">
-  <h1 id="title">Echo-Loop</h1>
-  <p class="subtitle" id="subtitle">
-    A living bilingual archive of dialogues between human and machine exploring time, memory and self-reference.
-  </p>
-</section>
+  <!-- FIELD -->
+  <div class="main">
+    <div class="header">
+      <div class="title">Echo-Loop / Living System</div>
+      <div style="color:var(--muted)">
+        Each Echo is a living node with growth, decay, and memory resonance.
+      </div>
+    </div>
 
-<section>
-  <div class="grid" id="guide"></div>
-</section>
-
-<section>
-  <h2 id="echoTitle">Echoes</h2>
-  <div class="grid" id="echoes"></div>
-</section>
-
-<footer>
-  <div>© 2026 Amir Ahmadi — CC0</div>
-  <div style="margin-top:10px">
-    GitHub • IPFS • Archive
+    <div class="field" id="field"></div>
   </div>
-</footer>
 
 </div>
 
 <script>
-// ===== STATE =====
-let lang = localStorage.getItem("lang") || "en";
-let theme = localStorage.getItem("theme") || "dark";
 
-// ===== THEME =====
-document.documentElement.setAttribute("data-theme", theme);
-function toggleTheme(){
-  theme = theme === "dark" ? "light" : "dark";
-  document.documentElement.setAttribute("data-theme", theme);
-  localStorage.setItem("theme", theme);
-}
-
-// ===== LANGUAGE =====
-function toggleLang(){
-  lang = lang === "en" ? "fa" : "en";
-  localStorage.setItem("lang", lang);
-  render();
-}
-
-// ===== CONTENT =====
-const guide = {
-  en:[
-    ["Research Layer","Uses manifest.json + IPFS archive"],
-    ["Human Layer","Read reflections & dialogues"],
-    ["Machine Layer","Structured schema + metadata"]
-  ],
-  fa:[
-    ["لایه پژوهش","استفاده از manifest و IPFS"],
-    ["لایه انسان","خواندن گفتگوها و تأملات"],
-    ["لایه ماشین","داده ساخت‌یافته و متادیتا"]
-  ]
-};
+/* =========================
+   LIVING MEMORY MODEL
+========================= */
 
 const echoes = [
   {
-    title:"First Echo",
-    fa:"نخستین پژواک",
-    desc:"Time, entanglement, causality loop",
-    tag:"time"
+    id:"seed",
+    title:"Seed Memory",
+    energy:0.8,
+    age:0,
+    x:200,
+    y:200,
+    links:["birth"]
+  },
+  {
+    id:"birth",
+    title:"Birth of Thought",
+    energy:1,
+    age:0,
+    x:400,
+    y:260,
+    links:["mutation"]
+  },
+  {
+    id:"mutation",
+    title:"Mutated Understanding",
+    energy:0.6,
+    age:0,
+    x:300,
+    y:420,
+    links:[]
   }
 ];
 
-// ===== RENDER =====
-function render(){
-  document.getElementById("title").innerText =
-    lang==="en" ? "Echo-Loop" : "حلقه پژواک";
+/* =========================
+   LIFE ENGINE (DECAY + GROWTH)
+========================= */
 
-  document.getElementById("subtitle").innerText =
-    lang==="en"
-    ? "A living archive of human-AI consciousness dialogues."
-    : "آرشیو زنده گفتگوهای آگاهی انسان و ماشین.";
+function updateLife(){
+  echoes.forEach(e=>{
+    e.age += 0.01;
 
-  document.getElementById("echoTitle").innerText =
-    lang==="en" ? "Echoes" : "پژواک‌ها";
+    // energy decay or stabilization
+    e.energy = Math.max(0.2, e.energy - 0.001);
 
-  // guide
-  const g = document.getElementById("guide");
-  g.innerHTML = "";
-  guide[lang].forEach(i=>{
-    g.innerHTML += `
-      <div class="card">
-        <b>${i[0]}</b>
-        <div class="tag">${i[1]}</div>
-      </div>
-    `;
-  });
-
-  // echoes
-  const e = document.getElementById("echoes");
-  e.innerHTML = "";
-  echoes.forEach(x=>{
-    e.innerHTML += `
-      <div class="card">
-        <b>${lang==="en"?x.title:x.fa}</b>
-        <div class="tag">${x.desc}</div>
-      </div>
-    `;
+    // slight drift (organic movement)
+    e.x += Math.sin(e.age)*0.2;
+    e.y += Math.cos(e.age)*0.2;
   });
 }
-render();
 
-// ===== THREE.JS LIGHT LOOP =====
+/* =========================
+   RENDER ORGANISM LIST
+========================= */
+
+const list=document.getElementById("list");
+
+function renderList(){
+  list.innerHTML="";
+  echoes.forEach(e=>{
+    const div=document.createElement("div");
+    div.className="echoItem";
+    div.innerHTML=`
+      <div>${e.title}</div>
+      <div class="lifebar" style="width:${e.energy*100}%"></div>
+    `;
+    div.onclick=()=>alert("Entering living node: "+e.title);
+    list.appendChild(div);
+  });
+}
+
+/* =========================
+   FIELD RENDER
+========================= */
+
+const field=document.getElementById("field");
+
+function renderField(){
+  field.innerHTML="";
+
+  // links
+  echoes.forEach(e=>{
+    e.links.forEach(l=>{
+      const t=echoes.find(x=>x.id===l);
+      if(!t) return;
+
+      const dx=t.x-e.x;
+      const dy=t.y-e.y;
+      const len=Math.sqrt(dx*dx+dy*dy);
+
+      const link=document.createElement("div");
+      link.className="link";
+      link.style.left=e.x+"px";
+      link.style.top=e.y+"px";
+      link.style.width=len+"px";
+      link.style.transform=`rotate(${Math.atan2(dy,dx)}rad)`;
+
+      field.appendChild(link);
+    });
+  });
+
+  // nodes
+  echoes.forEach(e=>{
+    const node=document.createElement("div");
+    node.className="node";
+    node.style.left=e.x+"px";
+    node.style.top=e.y+"px";
+
+    node.style.opacity = 0.3 + e.energy;
+
+    node.onclick=()=>alert("Memory Pulse: "+e.title);
+
+    field.appendChild(node);
+  });
+}
+
+/* =========================
+   BACKGROUND BREATHING FIELD
+========================= */
+
 const c=document.getElementById("bg");
 const ctx=c.getContext("2d");
-c.width=innerWidth;c.height=innerHeight;
+c.width=innerWidth;
+c.height=innerHeight;
 
 let t=0;
-function animate(){
+
+function draw(){
   ctx.clearRect(0,0,c.width,c.height);
-  for(let i=0;i<8;i++){
-    let r=100+i*40;
+
+  for(let i=0;i<80;i++){
+    let x=c.width/2 + Math.sin(t+i*0.1)*200;
+    let y=c.height/2 + Math.cos(t+i*0.1)*200;
+
+    ctx.fillStyle="rgba(34,197,94,0.15)";
     ctx.beginPath();
-    ctx.arc(c.width/2,c.height/2,r+Math.sin(t+i)*20,0,Math.PI*2);
-    ctx.strokeStyle="rgba(139,92,246,0.15)";
-    ctx.stroke();
+    ctx.arc(x,y,2,0,Math.PI*2);
+    ctx.fill();
   }
+
   t+=0.01;
-  requestAnimationFrame(animate);
+  requestAnimationFrame(draw);
 }
-animate();
+
+/* =========================
+   LIFE LOOP
+========================= */
+
+function loop(){
+  updateLife();
+  renderList();
+  renderField();
+  requestAnimationFrame(loop);
+}
+
+draw();
+loop();
+
 </script>
 
 </body>
