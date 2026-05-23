@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use this archive in academic work, please cite as:"
+authors:
+  - family-names: Ahmadi
+    given-names: Amir
+    email: starship.meta@gmail.com
+title: "Echo-Loop: A Bilingual Archive of Deep Human-AI Dialogues on Time, Quantum Entanglement, Causality, Consciousness and Free Will"
+date-released: 2026-05-23
+url: "https://github.com/axamir/echo-loop"
+repository: "https://github.com/axamir/echo-loop"
+version: 1.0
+license: CC0-1.0
+keywords:
+  - time
+  - quantum entanglement
+  - causality
+  - consciousness
+  - free will
+  - dialogue
+  - AI

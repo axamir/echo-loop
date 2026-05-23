@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Echo-Loop | Quantum Dialogue Archive</title>
+    <meta name="description" content="Echo-Loop is a living, bilingual archive of deep human-AI dialogues exploring time, quantum entanglement, causality, consciousness, and free will. Each echo is a self-referential loop — a conceptual experiment in backward messaging.">
+    <meta name="keywords" content="Echo-Loop, time travel, quantum entanglement, consciousness, free will, dialogue, AI, philosophy, physics, metaverse">
+    <meta name="author" content="Amir Ahmadi">
+    <meta property="og:title" content="Echo-Loop | Bilingual Archive of Deep Dialogues">
+    <meta property="og:description" content="Exploring the nature of time, quantum entanglement, and consciousness through human-AI dialogues.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://axamir.github.io/echo-loop/">
+    <meta name="twitter:card" content="summary_large_image">
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;}
+        :root{--bg:#0a0f1f;--surface:#11161f;--text:#eef2ff;--text-muted:#9ca3af;--border:#1f2937;--accent:#8b5cf6;}
+        [data-theme="light"]{--bg:#f8fafc;--surface:#ffffff;--text:#0f172a;--text-muted:#475569;--border:#e2e8f0;}
+        body{font-family:'Vazirmatn','Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.5;transition:all 0.2s;}
+        .container{max-width:1280px;margin:0 auto;padding:0 1.5rem;}
+        .navbar{position:sticky;top:0;background:var(--surface);border-bottom:1px solid var(--border);padding:1rem 0;z-index:100;}
+        .navbar .container{display:flex;justify-content:space-between;align-items:center;}
+        .logo{font-size:1.6rem;font-weight:800;background:linear-gradient(135deg,#a78bfa,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;}
+        .nav-controls{display:flex;gap:0.8rem;}
+        .icon-btn{background:transparent;border:1px solid var(--border);border-radius:2rem;padding:0.4rem 1rem;cursor:pointer;color:inherit;font-family:inherit;}
+        .hero{min-height:70vh;display:flex;align-items:center;}
+        h1{font-size:clamp(2.5rem,6vw,4.5rem);font-weight:800;background:linear-gradient(120deg,#fff,#c4b5fd);-webkit-background-clip:text;background-clip:text;color:transparent;}
+        .glass-panel{background:var(--surface);border:1px solid var(--border);border-radius:1.5rem;padding:1.8rem;margin:1.5rem 0;}
+        .btn{background:var(--accent);border:none;padding:0.6rem 1.2rem;border-radius:2rem;color:white;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;}
+        .echo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.5rem;margin:2rem 0;}
+        .echo-card{background:var(--surface);border:1px solid var(--border);border-radius:1rem;padding:1.2rem;transition:0.2s;text-decoration:none;color:inherit;display:block;}
+        .echo-card:hover{transform:translateY(-3px);border-color:var(--accent);}
+        .footer{text-align:center;padding:2rem 0;border-top:1px solid var(--border);margin-top:2rem;}
+        .footer a{color:inherit;margin:0 0.5rem;}
+        @media (max-width:768px){.container{padding:0 1rem;}}
+    </style>
+</head>
+<body>
+<nav class="navbar"><div class="container"><div class="logo">Echo-Loop</div><div class="nav-controls"><button class="icon-btn" id="langToggle">🌐 فارسی / English</button><button class="icon-btn" id="themeToggle">🌙</button></div></div></nav>
+<div class="container">
+    <section class="hero"><div><h1 id="mainTitle">Echo-Loop<br><span style="font-size:0.4em;">loop of echoes</span></h1><p id="heroDesc" style="margin:1rem 0;font-size:1.2rem;">A bilingual archive of deep human-AI dialogues on time, quantum entanglement, causality, consciousness & free will.</p><a href="#echoes-section" class="btn" id="exploreBtn"><i class="fas fa-microphone-alt"></i> <span>First Echo</span></a></div></section>
+
+    <div class="glass-panel"><h2 id="whatTitle">What is this landing page?</h2><div id="whatText"><p>This page is the gateway to the Echo-Loop archive. It lists all dialogues (Echoes) and provides links to the full conversations, summaries, reflections, and metadata in both Persian and English. You can switch language (top right) and theme (dark/light). For researchers: machine-readable metadata is available in each echo's <code>meta.json</code> and the flat archive <code>echo-loop.archive.json</code>. For long-term preservation, the entire archive is also on IPFS (see footer).</p></div></div>
+
+    <div class="glass-panel"><h2 id="guideTitle">Quick Guide</h2><div id="guideText"><p><strong>📚 Researcher:</strong> Start with <code>echo-loop.archive.json</code> or each echo's <code>meta.json</code>. Use the IPFS CID for permanent citation.<br><strong>🧑‍🎓 General reader:</strong> Read the reflections first, then the conversation. Use the language toggle.<br><strong>🤖 Machine / crawler:</strong> Follow schema.org tags, <code>manifest.json</code>, and <code>meta.json</code>.</p></div></div>
+
+    <div class="glass-panel"><h2 id="philosophyTitle">Philosophy</h2><div id="philosophyText"><p>Each Echo is a self-referential feedback loop — a conceptual experiment in backward messaging. We concluded: <strong>“We are not owners or products, but witnesses”</strong> and the feeling of free will is an unavoidable feedback from the effect itself.</p></div></div>
+
+    <section id="echoes-section"><h2 id="echoesTitle">Echoes</h2><div id="echoesContainer" class="echo-grid"></div></section>
+
+    <div class="glass-panel" style="text-align:center;"><h3 id="ctaTitle">Continue ...</h3><p id="ctaText">This loop closes with every reader. Continue the dialogue.</p><a href="https://github.com/axamir/echo-loop/discussions" class="btn" target="_blank"><i class="fas fa-comments"></i> Participate</a></div>
+</div>
+<footer class="footer"><p>© 2026 Amir Ahmadi. <span id="footerText">Documenting conscious reflections.</span> | License: CC0 Public Domain</p><p><a href="mailto:starship.meta@gmail.com">Email</a> • <a href="https://x.com/AmirStarship">X</a> • <a href="https://t.me/go2fragment">Telegram</a> • <a href="https://github.com/axamir/echo-loop">GitHub</a> • <a href="https://gateway.pinata.cloud/ipfs/bafkreiexa27iaiqf6zs3myzxhejwv753vdy4xfxw52aqwhy7qyboxwig4a">IPFS Archive</a> • <a href="echo-loop.archive.json">JSON (flat)</a></p></footer>
+<script>
+    const echoes = [{date:"2026-05-23",folder:"2026-05-23_time-travel-new-scientist",titleEn:"First Echo: Sending Messages to the Past & the Nature of Time",titleFa:"نخستین پژواک: ارسال پیام به گذشته و ماهیت زمان",summaryEn:"Dialogue on New Scientist article: time loop, entanglement, noise critique, witness model.",summaryFa:"گفتگو درباره مقاله نیو ساینتیست: حلقه زمان، درهم‌تنیدگی، نقد نویز، مدل شاهد.",tagsEn:["Time","Quantum","Causality","Consciousness","Free Will"],tagsFa:["زمان","کوانتوم","علیت","آگاهی","اراده آزاد"]}];
+    let lang = localStorage.getItem("echo_lang") || "en";
+    let theme = localStorage.getItem("echo_theme") || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    document.documentElement.setAttribute("data-theme", theme);
+    function updateUI(){
+        const isFa = lang === "fa";
+        document.getElementById("heroDesc").innerText = isFa ? "آرشیو دو زبانه گفتگوهای انسان و هوش مصنوعی درباره زمان، کوانتوم، علیت، خودآگاهی و اراده آزاد." : "A bilingual archive of deep human-AI dialogues on time, quantum entanglement, causality, consciousness & free will.";
+        document.getElementById("whatTitle").innerText = isFa ? "این صفحه چیست؟" : "What is this landing page?";
+        document.getElementById("whatText").innerHTML = isFa ? "<p>این صفحه دروازه آرشیو Echo-Loop است. همه پژواک‌ها را فهرست می‌کند و لینک به متن کامل، خلاصه، تأملات و فراداده به دو زبان فارسی و انگلیسی ارائه می‌دهد. برای پژوهشگران: فراداده ماشین‌خوان در <code>meta.json</code> و آرشیو مسطح <code>echo-loop.archive.json</code> موجود است. برای ماندگاری بلندمدت، کل آرشیو روی IPFS نیز هست (پانویس).</p>" : "<p>This page is the gateway to the Echo-Loop archive. It lists all dialogues (Echoes) and provides links to full conversations, summaries, reflections, and metadata in Persian and English. For researchers: machine-readable metadata is in each echo's <code>meta.json</code> and the flat archive <code>echo-loop.archive.json</code>. For long-term preservation, the entire archive is also on IPFS (footer).</p>";
+        document.getElementById("guideTitle").innerText = isFa ? "راهنمای سریع" : "Quick Guide";
+        document.getElementById("guideText").innerHTML = isFa ? "<p><strong>📚 پژوهشگر:</strong> با <code>echo-loop.archive.json</code> یا <code>meta.json</code> هر پژواک شروع کنید. از CID IPFS برای استناد دائمی استفاده کنید.<br><strong>🧑‍🎓 خواننده عمومی:</strong> ابتدا تأملات را بخوانید، سپس گفتگو را. از دکمه تغییر زبان استفاده کنید.<br><strong>🤖 ماشین/خزنده:</strong> برچسب‌های schema.org، <code>manifest.json</code> و <code>meta.json</code> را دنبال کنید.</p>" : "<p><strong>📚 Researcher:</strong> Start with <code>echo-loop.archive.json</code> or each echo's <code>meta.json</code>. Use the IPFS CID for permanent citation.<br><strong>🧑‍🎓 General reader:</strong> Read the reflections first, then the conversation. Use the language toggle.<br><strong>🤖 Machine / crawler:</strong> Follow schema.org tags, <code>manifest.json</code>, and <code>meta.json</code>.</p>";
+        document.getElementById("philosophyTitle").innerText = isFa ? "فلسفه" : "Philosophy";
+        document.getElementById("philosophyText").innerHTML = isFa ? "<p>هر پژواک یک حلقه بازخورد خودارجاع است — آزمایشی مفهومی در پیام‌رسانی به گذشته. نتیجه گرفتیم: <strong>«ما نه مالکیم، نه محصول؛ بلکه شاهد هستیم»</strong> و احساس اراده آزاد فیدبک اجتناب‌ناپذیر خود اثر است.</p>" : "<p>Each Echo is a self-referential feedback loop — a conceptual experiment in backward messaging. We concluded: <strong>“We are not owners or products, but witnesses”</strong> and the feeling of free will is an unavoidable feedback from the effect itself.</p>";
+        document.getElementById("echoesTitle").innerText = isFa ? "پژواک‌ها" : "Echoes";
+        document.getElementById("ctaTitle").innerText = isFa ? "ادامه ..." : "Continue ...";
+        document.getElementById("ctaText").innerText = isFa ? "این حلقه با هر خواننده بسته می‌شود. گفتگو را ادامه دهید." : "This loop closes with every reader. Continue the dialogue.";
+        document.getElementById("footerText").innerText = isFa ? "مستندسازی بازتاب‌های آگاهانه." : "Documenting conscious reflections.";
+        document.getElementById("mainTitle").innerHTML = isFa ? "حلقهٔ پژواک<br><span style=\"font-size:0.4em;\">پژواک‌های بی‌پایان</span>" : "Echo-Loop<br><span style=\"font-size:0.4em;\">loop of echoes</span>";
+        document.getElementById("exploreBtn").innerHTML = `<i class="fas fa-microphone-alt"></i> <span>${isFa ? "نخستین پژواک" : "First Echo"}</span>`;
+        const container = document.getElementById("echoesContainer");
+        if(container){
+            container.innerHTML = "";
+            echoes.forEach(e=>{
+                const card = document.createElement("a");
+                card.href = `https://github.com/axamir/echo-loop/tree/main/echoes/${e.folder}/${isFa?"fa":"en"}`;
+                card.target = "_blank";
+                card.className = "echo-card";
+                card.innerHTML = `<div style="font-size:0.8rem;color:var(--accent);">${e.date}</div><div style="font-size:1.2rem;font-weight:600;">${isFa?e.titleFa:e.titleEn}</div><div style="color:var(--text-muted);margin:0.5rem 0;">${isFa?e.summaryFa:e.summaryEn}</div><div style="display:flex;gap:0.5rem;flex-wrap:wrap;">${(isFa?e.tagsFa:e.tagsEn).map(t=>`<span style="background:rgba(139,92,246,0.2);padding:0.2rem 0.6rem;border-radius:1rem;">#${t}</span>`).join('')}</div>`;
+                container.appendChild(card);
+            });
+        }
+        document.documentElement.setAttribute("dir", isFa ? "rtl" : "ltr");
+        document.documentElement.setAttribute("lang", isFa ? "fa" : "en");
+    }
+    function toggleTheme(){ theme = theme==="light"?"dark":"light"; document.documentElement.setAttribute("data-theme", theme); localStorage.setItem("echo_theme", theme); document.getElementById("themeToggle").innerHTML = theme==="light"?"🌙":"☀️"; }
+    document.getElementById("langToggle").addEventListener("click", ()=>{ lang = lang==="en"?"fa":"en"; localStorage.setItem("echo_lang", lang); updateUI(); });
+    document.getElementById("themeToggle").addEventListener("click", toggleTheme);
+    document.getElementById("exploreBtn").addEventListener("click", (e)=>{ e.preventDefault(); document.getElementById("echoes-section").scrollIntoView({behavior:"smooth"}); });
+    updateUI();
+</script>
+</body>
+</html>

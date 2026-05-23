@@ -77,3 +77,32 @@ The loop closes with every reader. Continue.
 ## 🌐 Permanent IPFS Archive
 The entire archive is also available on IPFS (via Pinata) at:
 [`bafkreiexa27iaiqf6zs3myzxhejwv753vdy4xfxw52aqwhy7qyboxwig4a`](https://gateway.pinata.cloud/ipfs/bafkreiexa27iaiqf6zs3myzxhejwv753vdy4xfxw52aqwhy7qyboxwig4a)
+
+## 📂 File structure inside each Echo folder
+
+echoes/YYYY-MM-DD_topic/
+├── README.md # Abstract, open questions, citation guide (English)
+├── README.fa.md # Persian version
+├── en/ # English content
+│ ├── conversation.md (full dialogue)
+│ ├── summary.md (key takeaways)
+│ ├── reflections.md (personal journey)
+│ ├── links.md (references)
+│ └── meta.json (machine‑readable metadata)
+└── fa/ # Persian content (same files)
+
+
+
+## 🧭 For different audiences
+
+- **Researcher** → Use `meta.json` and `echo-loop.archive.json`. Cite via `CITATION.cff`.
+- **General reader** → Start with `reflections.md`, then `conversation.md`. Switch language in landing page.
+- **Machine / crawler** → Follow schema.org in landing page, `manifest.json` (root of `echoes/`), and `meta.json`.
+
+## 🌐 Permanent IPFS Archive
+
+The entire archive (flat JSON) is stored on IPFS via Pinata:
+- CID: `bafkreiexa27iaiqf6zs3myzxhejwv753vdy4xfxw52aqwhy7qyboxwig4a`
+- Gateway URL: https://gateway.pinata.cloud/ipfs/bafkreiexa27iaiqf6zs3myzxhejwv753vdy4xfxw52aqwhy7qyboxwig4a
+
+This file is self‑contained and can be read even if GitHub disappears.

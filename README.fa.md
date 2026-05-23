@@ -38,3 +38,11 @@ English | فارسی
 تلگرام: @go2fragment
 گیت‌هاب: axamir
 حلقه با هر خواننده بسته می‌شود. ادامه بده...
+
+## 🌐 آرشیو دائمی IPFS
+
+کل آرشیو (به صورت فایل JSON تخت) روی شبکه IPFS از طریق Pinata ذخیره شده است:
+- CID: `bafkreiexa27iaiqf6zs3myzxhejwv753vdy4xfxw52aqwhy7qyboxwig4a`
+- لینک درگاه: https://gateway.pinata.cloud/ipfs/bafkreiexa27iaiqf6zs3myzxhejwv753vdy4xfxw52aqwhy7qyboxwig4a
+
+این فایل مستقل است و حتی اگر گیت‌هاب از بین برود، قابل خواندن خواهد بود.
