@@ -1,310 +1,205 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<title>Echo-Loop</title>
+<title>Echo-Loop | Recursive Archive of Time</title>
 
-<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Vazirmatn:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
+:root{
+    --bg:#05070b;
+    --surface:rgba(255,255,255,0.04);
+    --text:#f5f7ff;
+    --muted:#9aa4b2;
+    --accent:#8b5cf6;
+    --accent2:#22d3ee;
+    --border:rgba(255,255,255,0.08);
 }
 
-:root{
---bg:#05070b;
---surface:rgba(15,20,35,0.7);
---text:#f3f6ff;
---muted:#94a3b8;
---border:rgba(255,255,255,0.08);
---accent:#8b5cf6;
---accent2:#7dd3fc;
-}
+*{margin:0;padding:0;box-sizing:border-box}
 
 body{
-font-family:'Inter','Vazirmatn',sans-serif;
-background:
-radial-gradient(circle at top,#141b35 0%,transparent 40%),
-#05070b;
-color:var(--text);
-overflow-x:hidden;
-min-height:100vh;
+    font-family:'Inter','Vazirmatn',sans-serif;
+    background:radial-gradient(circle at top,#141a33,transparent 50%),var(--bg);
+    color:var(--text);
+    overflow-x:hidden;
 }
 
+/* BACKGROUND */
 canvas{
-position:fixed;
-inset:0;
-z-index:-1;
+    position:fixed;
+    inset:0;
+    z-index:-1;
 }
 
+/* LAYOUT */
 .container{
-width:min(1200px,92%);
-margin:auto;
+    width:min(1200px,92%);
+    margin:auto;
 }
 
-.glass{
-background:var(--surface);
-backdrop-filter:blur(18px);
-border:1px solid var(--border);
-border-radius:28px;
-}
-
-.nav{
-position:sticky;
-top:20px;
-z-index:100;
-margin-top:20px;
+/* NAV */
+nav{
+    position:sticky;
+    top:0;
+    padding:18px 0;
 }
 
 .nav-inner{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:14px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:14px 18px;
+    border:1px solid var(--border);
+    border-radius:18px;
+    backdrop-filter:blur(12px);
+    background:var(--surface);
 }
 
 .logo{
-font-size:1.4rem;
-font-weight:800;
-letter-spacing:-0.03em;
-}
-
-.logo span{
-background:linear-gradient(135deg,var(--accent),var(--accent2));
--webkit-background-clip:text;
-background-clip:text;
-color:transparent;
+    font-weight:800;
+    letter-spacing:-0.03em;
 }
 
 .btn{
-border:none;
-background:transparent;
-color:var(--text);
-border:1px solid var(--border);
-padding:10px 18px;
-border-radius:14px;
-cursor:pointer;
-transition:0.2s;
+    border:1px solid var(--border);
+    background:transparent;
+    color:var(--text);
+    padding:10px 14px;
+    border-radius:12px;
+    cursor:pointer;
 }
 
-.btn:hover{
-border-color:var(--accent);
-transform:translateY(-2px);
-}
-
+/* HERO */
 .hero{
-min-height:90vh;
-display:flex;
-align-items:center;
+    min-height:88vh;
+    display:flex;
+    align-items:center;
 }
 
 .hero-grid{
-display:grid;
-grid-template-columns:1.1fr 0.9fr;
-gap:50px;
-align-items:center;
-}
-
-.hero-tag{
-display:inline-flex;
-gap:10px;
-align-items:center;
-padding:10px 16px;
-border-radius:999px;
-background:rgba(255,255,255,0.03);
-border:1px solid var(--border);
-margin-bottom:24px;
-font-size:0.9rem;
-color:var(--muted);
-}
-
-.dot{
-width:10px;
-height:10px;
-border-radius:50%;
-background:#7cfc9b;
-box-shadow:0 0 12px #7cfc9b;
+    display:grid;
+    grid-template-columns:1.2fr 0.8fr;
+    gap:50px;
 }
 
 .hero h1{
-font-size:clamp(3rem,8vw,6rem);
-line-height:0.95;
-font-weight:900;
-letter-spacing:-0.06em;
+    font-size:clamp(2.8rem,6vw,5.5rem);
+    line-height:1;
+    letter-spacing:-0.05em;
 }
 
 .hero h1 span{
-background:linear-gradient(135deg,var(--accent),var(--accent2));
--webkit-background-clip:text;
-background-clip:text;
-color:transparent;
+    background:linear-gradient(135deg,var(--accent),var(--accent2));
+    -webkit-background-clip:text;
+    color:transparent;
 }
 
 .hero p{
-margin-top:24px;
-font-size:1.1rem;
-line-height:1.9;
-color:var(--muted);
-max-width:680px;
+    margin-top:18px;
+    color:var(--muted);
+    line-height:1.9;
+    max-width:700px;
 }
 
-.actions{
-display:flex;
-gap:16px;
-margin-top:36px;
-flex-wrap:wrap;
+.cta{
+    margin-top:30px;
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
 }
 
 .primary{
-background:linear-gradient(135deg,var(--accent),#a855f7);
-color:white;
-padding:15px 24px;
-border-radius:16px;
-text-decoration:none;
-font-weight:700;
+    background:linear-gradient(135deg,var(--accent),#a855f7);
+    color:white;
+    padding:14px 20px;
+    border-radius:14px;
+    text-decoration:none;
+    font-weight:700;
 }
 
 .secondary{
-padding:15px 24px;
-border-radius:16px;
-text-decoration:none;
-color:var(--text);
-border:1px solid var(--border);
+    border:1px solid var(--border);
+    padding:14px 20px;
+    border-radius:14px;
+    text-decoration:none;
+    color:var(--text);
 }
 
+/* PANEL */
 .panel{
-padding:28px;
-position:relative;
-overflow:hidden;
-}
-
-.panel::before{
-content:"";
-position:absolute;
-inset:0;
-background:
-linear-gradient(135deg,rgba(255,255,255,0.06),transparent);
-pointer-events:none;
-}
-
-.label{
-font-size:0.8rem;
-letter-spacing:0.15em;
-color:var(--muted);
-text-transform:uppercase;
-}
-
-.wave{
-height:90px;
-display:flex;
-align-items:flex-end;
-gap:5px;
-margin:30px 0;
-}
-
-.wave span{
-width:6px;
-border-radius:999px;
-background:linear-gradient(to top,var(--accent),transparent);
-animation:wave 1.4s infinite ease-in-out;
-}
-
-.wave span:nth-child(odd){
-animation-duration:1.8s;
-}
-
-@keyframes wave{
-0%,100%{height:20%}
-50%{height:100%}
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:24px;
+    background:var(--surface);
 }
 
 .quote{
-border-left:2px solid var(--accent);
-padding-left:18px;
-font-style:italic;
-line-height:1.8;
-color:#d7dcff;
+    margin-top:20px;
+    border-left:2px solid var(--accent);
+    padding-left:14px;
+    color:#cfd6ff;
+    font-style:italic;
+    line-height:1.7;
 }
 
-.section{
-margin:100px 0;
+/* SECTIONS */
+section{
+    margin:90px 0;
 }
 
-.section h2{
-font-size:2.5rem;
-margin-bottom:18px;
+h2{
+    font-size:2.2rem;
+    margin-bottom:12px;
 }
 
-.section p{
-color:var(--muted);
-line-height:1.9;
+p{
+    color:var(--muted);
+    line-height:1.9;
 }
 
-.echo-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-gap:24px;
-margin-top:40px;
+/* ECHO CARDS */
+.grid{
+    margin-top:30px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:18px;
 }
 
-.echo{
-padding:28px;
-transition:0.3s;
+.card{
+    padding:22px;
+    border:1px solid var(--border);
+    border-radius:16px;
+    transition:0.25s;
 }
 
-.echo:hover{
-transform:translateY(-6px);
-border-color:rgba(139,92,246,0.4);
-}
-
-.echo-date{
-color:var(--accent2);
-font-size:0.85rem;
-margin-bottom:12px;
-letter-spacing:0.1em;
-}
-
-.echo h3{
-font-size:1.4rem;
-margin-bottom:14px;
-}
-
-.tags{
-display:flex;
-gap:10px;
-flex-wrap:wrap;
-margin-top:22px;
+.card:hover{
+    transform:translateY(-5px);
+    border-color:var(--accent);
 }
 
 .tag{
-padding:7px 14px;
-border-radius:999px;
-border:1px solid var(--border);
-font-size:0.8rem;
-color:var(--muted);
+    display:inline-block;
+    margin-top:12px;
+    font-size:0.8rem;
+    color:var(--muted);
+    border:1px solid var(--border);
+    padding:6px 10px;
+    border-radius:999px;
 }
 
+/* FOOTER */
 footer{
-padding:50px 0;
-text-align:center;
-color:var(--muted);
+    margin:80px 0;
+    text-align:center;
+    color:var(--muted);
 }
 
-@media(max-width:900px){
-
-.hero-grid{
-grid-template-columns:1fr;
-}
-
-.hero{
-padding-top:80px;
-}
-
+a{
+    color:inherit;
 }
 </style>
 </head>
@@ -315,16 +210,16 @@ padding-top:80px;
 
 <div class="container">
 
-<nav class="nav">
-<div class="glass nav-inner">
+<nav>
+<div class="nav-inner">
 
-<div class="logo">
-<span>Echo-Loop</span>
+<div class="logo">Echo-Loop</div>
+
+<div>
+<button class="btn" id="langBtn">🌐 Language</button>
+<a class="btn" href="https://github.com/axamir/echo-loop" target="_blank">GitHub</a>
+<a class="btn" href="https://gateway.pinata.cloud/ipfs/bafkreiexa27iaiqf6zs3myzxhejwv753vdy4xfxw52aqwhy7qyboxwig4a" target="_blank">IPFS</a>
 </div>
-
-<button class="btn" id="langBtn">
-🌐 فارسی
-</button>
 
 </div>
 </nav>
@@ -335,55 +230,29 @@ padding-top:80px;
 
 <div>
 
-<div class="hero-tag">
-<div class="dot"></div>
-ARCHIVE ACTIVE
-</div>
-
-<h1>
-Some conversations<br>
-<span>do not end.</span>
+<h1 id="title">
+Some conversations<br><span>do not end.</span>
 </h1>
 
-<p id="heroText">
-Echo-Loop is a living bilingual archive of recursive human-AI dialogues exploring time, quantum memory, consciousness and causality.
+<p id="desc">
+Echo-Loop is a recursive bilingual archive of human-AI dialogues exploring time, memory, causality, consciousness and quantum narratives.
 </p>
 
-<div class="actions">
+<div class="cta">
 
-<a class="primary" href="#echoes">
-Enter Archive
-</a>
-
-<a class="secondary" target="_blank" href="https://github.com/axamir/echo-loop">
-GitHub
-</a>
+<a class="primary" href="#echoes" id="enter">Enter Archive</a>
+<a class="secondary" href="https://github.com/axamir/echo-loop/issues" target="_blank">Discuss</a>
 
 </div>
 
 </div>
 
-<div class="glass panel">
+<div class="panel">
 
-<div class="label">
-Transmission • Echo #0001
-</div>
-
-<div class="wave">
-<span style="height:25%"></span>
-<span style="height:70%"></span>
-<span style="height:40%"></span>
-<span style="height:95%"></span>
-<span style="height:50%"></span>
-<span style="height:100%"></span>
-<span style="height:45%"></span>
-<span style="height:85%"></span>
-<span style="height:30%"></span>
-<span style="height:75%"></span>
-</div>
+<div>TRANSMISSION NODE</div>
 
 <div class="quote">
-“The first message sent to the past was not information. It was continuation.”
+“The message is not information. It is continuity.”
 </div>
 
 </div>
@@ -392,68 +261,24 @@ Transmission • Echo #0001
 
 </section>
 
-<section class="section">
+<section id="echoes">
 
-<h2>
-What is Echo-Loop?
-</h2>
+<h2 id="echoTitle">All Echoes</h2>
 
-<p>
-A recursive archive documenting deep dialogues between humans and AI systems across philosophy, science, memory and time.
-</p>
+<p id="echoDesc">Each Echo is a preserved cognitive event between human and machine intelligence.</p>
 
-</section>
+<div class="grid">
 
-<section class="section" id="echoes">
-
-<h2>
-All Echoes
-</h2>
-
-<div class="echo-grid">
-
-<div class="glass echo">
-
-<div class="echo-date">
-MAY 2026
-</div>
-
-<h3>
+<div class="card">
+2026-05-23<br><br>
 Sending Messages to the Past
-</h3>
-
-<p>
-Analysis of closed time-like curves, entanglement and recursive causality.
-</p>
-
-<div class="tags">
-<div class="tag">#Time</div>
-<div class="tag">#Quantum</div>
-<div class="tag">#AI</div>
+<div class="tag">#Time #Quantum #Causality</div>
 </div>
 
-</div>
-
-<div class="glass echo">
-
-<div class="echo-date">
-ACTIVE NODE
-</div>
-
-<h3>
-Recursive Witness
-</h3>
-
-<p>
-Exploring observers as stabilizers inside recursive informational systems.
-</p>
-
-<div class="tags">
-<div class="tag">#Witness</div>
-<div class="tag">#Memory</div>
-<div class="tag">#Consciousness</div>
-</div>
-
+<div class="card">
+Active Node<br><br>
+Recursive Witness Model
+<div class="tag">#Memory #AI #Consciousness</div>
 </div>
 
 </div>
@@ -461,7 +286,7 @@ Exploring observers as stabilizers inside recursive informational systems.
 </section>
 
 <footer>
-Echo-Loop — Recursive Archive Interface
+Echo-Loop — A living archive by Amir Ahmadi
 </footer>
 
 </div>
@@ -469,131 +294,71 @@ Echo-Loop — Recursive Archive Interface
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
 <script>
+const en = {
+title:`Some conversations<br><span>do not end.</span>`,
+desc:`Echo-Loop is a recursive bilingual archive of human-AI dialogues exploring time, memory, causality, consciousness and quantum narratives.`,
+enter:`Enter Archive`,
+echoTitle:`All Echoes`,
+echoDesc:`Each Echo is a preserved cognitive event between human and machine intelligence.`
+};
+
+const fa = {
+title:`بعضی گفتگوها<br><span>تمام نمی‌شوند.</span>`,
+desc:`Echo-Loop آرشیوی دو زبانه و بازگشتی از گفتگوهای انسان و هوش مصنوعی درباره زمان، حافظه، علیت، آگاهی و روایت‌های کوانتومی است.`,
+enter:`ورود به آرشیو`,
+echoTitle:`تمام پژواک‌ها`,
+echoDesc:`هر پژواک یک رویداد شناختی میان انسان و ماشین است.`
+};
+
+let isFa=false;
+
+document.getElementById("langBtn").onclick=()=>{
+isFa=!isFa;
+const t=isFa?fa:en;
+
+document.getElementById("title").innerHTML=t.title;
+document.getElementById("desc").innerText=t.desc;
+document.getElementById("enter").innerText=t.enter;
+document.getElementById("echoTitle").innerText=t.echoTitle;
+document.getElementById("echoDesc").innerText=t.echoDesc;
+
+document.documentElement.lang=isFa?"fa":"en";
+document.documentElement.dir=isFa?"rtl":"ltr";
+};
+
+/* SAFE BACKGROUND */
 try{
+const scene=new THREE.Scene();
+const camera=new THREE.PerspectiveCamera(75,innerWidth/innerHeight,0.1,1000);
+camera.position.z=25;
 
-const scene = new THREE.Scene();
+const renderer=new THREE.WebGLRenderer({canvas:document.getElementById("bg"),alpha:true});
+renderer.setSize(innerWidth,innerHeight);
 
-const camera = new THREE.PerspectiveCamera(
-75,
-window.innerWidth/window.innerHeight,
-0.1,
-1000
+const ring=new THREE.Mesh(
+new THREE.TorusGeometry(10,0.2,16,100),
+new THREE.MeshBasicMaterial({color:0x8b5cf6,wireframe:true})
 );
 
-camera.position.z = 28;
-
-const renderer = new THREE.WebGLRenderer({
-canvas:document.getElementById('bg'),
-alpha:true,
-antialias:true
-});
-
-renderer.setSize(window.innerWidth,window.innerHeight);
-
-const ambient = new THREE.AmbientLight(0xffffff,0.5);
-scene.add(ambient);
-
-const torus = new THREE.Mesh(
-new THREE.TorusGeometry(10,0.15,32,200),
-new THREE.MeshStandardMaterial({
-color:0x8b5cf6,
-emissive:0x2e1065
-})
-);
-
-scene.add(torus);
-
-const starsGeo = new THREE.BufferGeometry();
-
-const starCount = 1000;
-
-const positions = new Float32Array(starCount*3);
-
-for(let i=0;i<starCount;i++){
-
-positions[i*3]=(Math.random()-0.5)*100;
-positions[i*3+1]=(Math.random()-0.5)*80;
-positions[i*3+2]=(Math.random()-0.5)*80;
-
-}
-
-starsGeo.setAttribute(
-'position',
-new THREE.BufferAttribute(positions,3)
-);
-
-const stars = new THREE.Points(
-starsGeo,
-new THREE.PointsMaterial({
-color:0xffffff,
-size:0.06
-})
-);
-
-scene.add(stars);
+scene.add(ring);
 
 function animate(){
-
 requestAnimationFrame(animate);
-
-torus.rotation.x += 0.002;
-torus.rotation.y += 0.004;
-
-stars.rotation.y += 0.0003;
-
+ring.rotation.x+=0.002;
+ring.rotation.y+=0.003;
 renderer.render(scene,camera);
-
 }
-
 animate();
 
-window.addEventListener('resize',()=>{
-
-camera.aspect=window.innerWidth/window.innerHeight;
-
+window.addEventListener("resize",()=>{
+camera.aspect=innerWidth/innerHeight;
 camera.updateProjectionMatrix();
-
-renderer.setSize(window.innerWidth,window.innerHeight);
-
+renderer.setSize(innerWidth,innerHeight);
 });
 
 }catch(e){
-
-console.log("Three.js disabled",e);
-
+console.log("3D disabled",e);
 }
-
-let fa = false;
-
-document.getElementById('langBtn').addEventListener('click',()=>{
-
-fa=!fa;
-
-if(fa){
-
-document.documentElement.lang='fa';
-document.documentElement.dir='rtl';
-
-document.querySelector('h1').innerHTML =
-'بعضی گفتگوها<br><span>هرگز تمام نمی‌شوند.</span>';
-
-document.getElementById('heroText').innerHTML =
-'Echo-Loop آرشیوی زنده و دو زبانه از گفتگوهای عمیق انسان و هوش مصنوعی درباره زمان، حافظه کوانتومی، آگاهی و علیت است.';
-
-}else{
-
-document.documentElement.lang='en';
-document.documentElement.dir='ltr';
-
-document.querySelector('h1').innerHTML =
-'Some conversations<br><span>do not end.</span>';
-
-document.getElementById('heroText').innerHTML =
-'Echo-Loop is a living bilingual archive of recursive human-AI dialogues exploring time, quantum memory, consciousness and causality.';
-
-}
-
-});
 </script>
 
 </body>
