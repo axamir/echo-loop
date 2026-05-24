@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" data-mode="en">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-<title>Echo-Loop | Living Archive System</title>
+<title>Echo-Loop | Autonomous Archive System</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700;900&family=Vazirmatn:wght@300;500;700&display=swap" rel="stylesheet">
 
@@ -23,109 +23,62 @@
 
 body{
 font-family:'Inter','Vazirmatn',sans-serif;
-background:radial-gradient(circle at top,#141b33,transparent 55%),var(--bg);
+background:radial-gradient(circle at top,#0f1a33,transparent 65%),var(--bg);
 color:var(--text);
-overflow-x:hidden;
+overflow:hidden;
 }
 
-/* SIGNAL CANVAS */
+/* CANVAS LAYERS */
 canvas{
 position:fixed;
 inset:0;
-z-index:-2;
 }
 
-/* NOISE */
-.noise{
-position:fixed;
-inset:0;
-z-index:-1;
-opacity:0.04;
-background:radial-gradient(circle,rgba(255,255,255,0.05),transparent 60%);
-pointer-events:none;
-}
+#bg{z-index:-3}
+#graph{z-index:-2}
+#signal{z-index:-1;opacity:0.08}
 
-/* LAYOUT */
-.container{
+/* UI */
+.ui{
+position:relative;
+z-index:10;
 width:min(1200px,92%);
 margin:auto;
+padding-top:60px;
 }
 
-/* NAV */
-nav{
-position:sticky;
-top:18px;
-z-index:100;
-}
-
-.nav{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:14px 18px;
-border:1px solid var(--line);
-border-radius:16px;
-backdrop-filter:blur(14px);
-}
-
-.logo{
-font-weight:900;
-letter-spacing:-0.03em;
-}
-
-.btn{
-border:1px solid var(--line);
-background:transparent;
-color:var(--text);
-padding:10px 14px;
-border-radius:12px;
-cursor:pointer;
-transition:.2s;
-}
-
-.btn:hover{
-border-color:var(--accent);
-transform:translateY(-2px);
-}
-
-/* HERO */
-.hero{
-min-height:88vh;
-display:flex;
-align-items:center;
-}
-
-.hero h1{
+.title{
 font-size:clamp(3rem,7vw,6rem);
 line-height:0.95;
+font-weight:900;
 letter-spacing:-0.05em;
 }
 
-.hero h1 span{
+.title span{
 background:linear-gradient(135deg,var(--accent),var(--accent2));
 -webkit-background-clip:text;
 color:transparent;
 }
 
-.hero p{
-margin-top:20px;
+.subtitle{
+margin-top:16px;
 color:var(--muted);
-max-width:720px;
+max-width:700px;
 line-height:1.9;
 }
 
-/* ARCHITECTURE GRID */
+/* NODE GRID */
 .grid{
 margin-top:60px;
 display:grid;
-grid-template-columns:1fr 1fr;
-gap:18px;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:16px;
 }
 
 .node{
 border:1px solid var(--line);
+padding:18px;
 border-radius:16px;
-padding:22px;
 cursor:pointer;
 transition:.25s;
 position:relative;
@@ -134,55 +87,27 @@ overflow:hidden;
 
 .node:hover{
 border-color:var(--accent);
-transform:translateY(-5px);
+transform:translateY(-4px);
 }
 
-.node::after{
-content:"";
+.energy{
 position:absolute;
-inset:-40%;
-background:radial-gradient(circle,rgba(139,92,246,0.15),transparent 60%);
-opacity:0;
-transition:.4s;
-}
-
-.node:hover::after{
-opacity:1;
-}
-
-.date{
-color:var(--accent2);
-font-size:.85rem;
-letter-spacing:.1em;
-}
-
-.title{
-margin-top:10px;
-font-size:1.3rem;
-font-weight:700;
-}
-
-.tags{
-margin-top:14px;
-display:flex;
-flex-wrap:wrap;
-gap:8px;
-}
-
-.tag{
-border:1px solid var(--line);
-padding:6px 10px;
-border-radius:999px;
+top:10px;
+right:12px;
 font-size:.75rem;
-color:var(--muted);
+color:var(--accent2);
 }
 
-/* GRAPH LINES */
-#lineCanvas{
+/* STATE BAR */
+.state{
 position:fixed;
-inset:0;
-z-index:-1;
-pointer-events:none;
+top:16px;
+right:16px;
+border:1px solid var(--line);
+padding:10px 14px;
+border-radius:999px;
+backdrop-filter:blur(10px);
+font-size:.8rem;
 }
 
 /* MODAL */
@@ -191,26 +116,16 @@ position:fixed;
 inset:0;
 display:none;
 place-items:center;
-background:rgba(0,0,0,0.6);
-backdrop-filter:blur(10px);
+background:rgba(0,0,0,0.65);
+backdrop-filter:blur(12px);
 }
 
 .modal-content{
-width:min(800px,92%);
-padding:28px;
+width:min(700px,92%);
+padding:24px;
 border:1px solid var(--line);
 border-radius:16px;
-background:rgba(10,15,25,0.9);
-}
-
-.close{
-float:right;
-cursor:pointer;
-color:var(--muted);
-}
-
-@media(max-width:800px){
-.grid{grid-template-columns:1fr}
+background:rgba(10,15,25,0.95);
 }
 
 </style>
@@ -219,124 +134,142 @@ color:var(--muted);
 <body>
 
 <canvas id="bg"></canvas>
-<canvas id="lineCanvas"></canvas>
-<div class="noise"></div>
+<canvas id="graph"></canvas>
+<canvas id="signal"></canvas>
 
-<div class="container">
+<div class="state" id="state">SYSTEM: IDLE</div>
 
-<nav>
-<div class="nav">
-<div class="logo">Echo-Loop / Level 2</div>
-<button class="btn" id="lang">EN / FA</button>
-</div>
-</nav>
+<div class="ui">
 
-<section class="hero">
-
-<div>
-
-<h1>
-Living<br><span>Archive System</span>
-</h1>
-
-<p id="desc">
-Echo-Loop is no longer a page. It is a recursive memory system where each Echo behaves as a node in a growing cognitive graph.
-</p>
-
+<div class="title">
+Echo-Loop<br><span>Autonomous Archive</span>
 </div>
 
-</section>
-
-<section>
-
-<div class="grid">
-
-<div class="node" onclick="openNode(1)">
-<div class="date">2026.05</div>
-<div class="title">Time Loop Hypothesis</div>
-<div class="tags">
-<div class="tag">time</div><div class="tag">causality</div>
-</div>
+<div class="subtitle" id="subtitle">
+The archive now reacts. Nodes evolve based on attention, interaction, and time exposure.
 </div>
 
-<div class="node" onclick="openNode(2)">
-<div class="date">active</div>
-<div class="title">Witness Model</div>
-<div class="tags">
-<div class="tag">memory</div><div class="tag">AI</div>
-</div>
-</div>
-
-<div class="node" onclick="openNode(3)">
-<div class="date">quantum</div>
-<div class="title">Entanglement Messaging</div>
-<div class="tags">
-<div class="tag">physics</div><div class="tag">signal</div>
-</div>
-</div>
-
-<div class="node" onclick="openNode(4)">
-<div class="date">future</div>
-<div class="title">Recursive Identity</div>
-<div class="tags">
-<div class="tag">self</div><div class="tag">consciousness</div>
-</div>
-</div>
-
-</div>
-
-</section>
+<div class="grid" id="grid"></div>
 
 </div>
 
 <div class="modal" id="modal">
 <div class="modal-content">
-<span class="close" onclick="closeNode()">✕</span>
 <h2 id="mTitle"></h2>
-<p id="mText" style="margin-top:12px;color:#9aa4b2;line-height:1.9;"></p>
+<p id="mText" style="margin-top:12px;color:#9aa4b2;line-height:1.8;"></p>
 </div>
 </div>
 
 <script>
 
-/* SIMPLE GRAPH BACKGROUND */
-const c=document.getElementById("bg");
-const ctx=c.getContext("2d");
+/* =========================
+AUTONOMOUS MEMORY AGENT CORE
+========================= */
 
-c.width=innerWidth;
-c.height=innerHeight;
+let nodes=Array.from({length:12},(_,i)=>({
+id:i,
+title:["Time Loop","Witness Model","Quantum Signal","Recursive Identity","Entropy Drift","Memory Collapse","Causal Echo","Observer Field","Temporal Fold","Signal Loss","Reconstruction","Drift Memory"][i],
+desc:"This node evolves based on interaction pressure and recursive attention feedback.",
+energy:Math.random()*0.6+0.2,
+attention:0
+}));
 
-let nodes=Array.from({length:60},()=>({
+let state="idle";
+
+/* RENDER UI NODES */
+function render(){
+const g=document.getElementById("grid");
+g.innerHTML="";
+
+nodes.forEach(n=>{
+
+n.energy+=Math.random()*0.02-0.01;
+n.energy=Math.max(0.1,Math.min(1,n.energy));
+
+g.innerHTML+=`
+<div class="node" onclick="openNode(${n.id})"
+onmouseenter="attend(${n.id})">
+
+<div class="energy">⚡ ${n.energy.toFixed(2)}</div>
+<div style="font-weight:700">${n.title}</div>
+<div style="margin-top:10px;color:#9aa4b2;font-size:.9rem">
+${n.desc}
+</div>
+
+</div>
+`;
+});
+
+requestAnimationFrame(render);
+}
+
+render();
+
+/* ATTENTION ENGINE */
+function attend(id){
+state="reacting";
+document.getElementById("state").innerText="SYSTEM: REACTING";
+
+nodes[id].attention+=0.2;
+nodes[id].energy+=0.05;
+
+/* ripple effect */
+nodes.forEach(n=>{
+if(n.id!==id){
+n.energy-=0.01;
+}
+});
+}
+
+/* MODAL */
+function openNode(id){
+document.getElementById("modal").style.display="grid";
+document.getElementById("mTitle").innerText=nodes[id].title;
+document.getElementById("mText").innerText=
+nodes[id].desc + "\n\nAttention Level: " + nodes[id].attention.toFixed(2);
+}
+
+/* BACKGROUND SIGNAL FIELD */
+const bg=document.getElementById("bg");
+const gctx=bg.getContext("2d");
+
+bg.width=innerWidth;
+bg.height=innerHeight;
+
+let pts=Array.from({length:90},()=>({
 x:Math.random()*innerWidth,
 y:Math.random()*innerHeight,
-vx:(Math.random()-0.5)*0.4,
-vy:(Math.random()-0.5)*0.4
+vx:(Math.random()-0.5)*0.5,
+vy:(Math.random()-0.5)*0.5
 }));
 
 function draw(){
-ctx.clearRect(0,0,c.width,c.height);
 
-for(let n of nodes){
-n.x+=n.vx;
-n.y+=n.vy;
+gctx.clearRect(0,0,bg.width,bg.height);
 
-if(n.x<0||n.x>innerWidth)n.vx*=-1;
-if(n.y<0||n.y>innerHeight)n.vy*=-1;
+for(let p of pts){
 
-ctx.fillStyle="rgba(139,92,246,0.5)";
-ctx.fillRect(n.x,n.y,2,2);
+p.x+=p.vx;
+p.y+=p.vy;
 
-for(let m of nodes){
-let dx=n.x-m.x;
-let dy=n.y-m.y;
+if(p.x<0||p.x>innerWidth)p.vx*=-1;
+if(p.y<0||p.y>innerHeight)p.vy*=-1;
+
+gctx.fillStyle="rgba(139,92,246,0.5)";
+gctx.fillRect(p.x,p.y,2,2);
+
+for(let q of pts){
+
+let dx=p.x-q.x;
+let dy=p.y-q.y;
 let d=Math.sqrt(dx*dx+dy*dy);
 
-if(d<120){
-ctx.strokeStyle="rgba(139,92,246,0.08)";
-ctx.beginPath();
-ctx.moveTo(n.x,n.y);
-ctx.lineTo(m.x,m.y);
-ctx.stroke();
+if(d<110){
+gctx.strokeStyle="rgba(139,92,246,0.07)";
+gctx.beginPath();
+gctx.moveTo(p.x,p.y);
+gctx.lineTo(q.x,q.y);
+gctx.stroke();
 }
 }
 }
@@ -345,41 +278,6 @@ requestAnimationFrame(draw);
 }
 
 draw();
-
-/* MODAL SYSTEM */
-const data={
-1:["Time Loop Hypothesis","Time may not be linear. It may be a self-consistent recursive structure."],
-2:["Witness Model","Consciousness acts as stabilization layer in recursive information systems."],
-3:["Entanglement Messaging","Quantum entanglement interpreted as non-local informational coupling."],
-4:["Recursive Identity","Identity emerges as a loop of memory observing itself."]
-};
-
-function openNode(id){
-document.getElementById("modal").style.display="grid";
-document.getElementById("mTitle").innerText=data[id][0];
-document.getElementById("mText").innerText=data[id][1];
-}
-
-function closeNode(){
-document.getElementById("modal").style.display="none";
-}
-
-/* LANG */
-let fa=false;
-
-document.getElementById("lang").onclick=()=>{
-
-fa=!fa;
-
-document.getElementById("desc").innerText=
-fa?
-"اکو-لوپ یک سیستم حافظه بازگشتی است که هر پژواک به عنوان یک گره در گراف شناختی عمل می‌کند."
-:
-"Echo-Loop is no longer a page. It is a recursive memory system where each Echo behaves as a node in a growing cognitive graph.";
-
-document.documentElement.lang=fa?"fa":"en";
-document.documentElement.dir=fa?"rtl":"ltr";
-};
 
 </script>
 
